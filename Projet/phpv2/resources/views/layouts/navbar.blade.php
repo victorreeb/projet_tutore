@@ -31,11 +31,5 @@
                 @endif
             </div>
         </nav>
-
-        <div class="container">
-            <div class="row">
-                Welcome Page
-            </div>
-        </div>
     </body>
 </html>
