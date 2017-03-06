@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <a href="{{ url('/exercises/begin') }}">Commencer exercice test</a>
                 </div>
             </div>
         </div>
