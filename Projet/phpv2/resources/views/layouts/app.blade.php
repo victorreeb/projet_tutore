@@ -25,6 +25,7 @@
 <body>
 
     @yield('content')
+    @yield('navbar')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
