@@ -14,10 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/hello', 'HomeController@toto');
+
+    Route::get('/home', 'HomeController@index');
+    Route::get('/exercises/resolve','ExerciseController@begin');
+    Route::post('/exercises/resolve','ExerciseController@resolve');
+
 
 /* Route for User Profile */
 Route::get('/profile', 'UserController@profile');
