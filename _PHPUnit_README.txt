@@ -11,3 +11,5 @@ Classe de test
 		}
 	}
 	
+Tester en console :
+	./vendor/bin/phpunit <test directory>
