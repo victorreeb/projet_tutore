@@ -15,7 +15,6 @@
 
     </head>
     <body>
-        @section('nav')
         <nav>
             <div class="nav-wrapper">
                 @if (Route::has('login'))
@@ -32,6 +31,5 @@
                 @endif
             </div>
         </nav>
-        @endsection
     </body>
 </html>
