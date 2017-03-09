@@ -27,4 +27,4 @@ Route::get('/hello', 'HomeController@toto');
 Route::get('/profile', 'UserController@profile');
 Route::post('/profile', 'UserController@update_avatar');
 
-Route::get('/logout');
+Route::get('/logout'); /* todo */
