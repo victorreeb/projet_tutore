@@ -24,9 +24,11 @@ Route::post('/exercises/resolve','ExerciseController@resolve');
 
 /* Route for Creat exercises */
 Route::get('/exercises/create', 'ExerciseController@getCreate');
-Route::get('/exercises/create/test', 'ExerciseController@getCreateTest');
 Route::post('/exercises/postCreate','ExerciseController@postCreate');
 
+/* Route for add test for exercices */
+Route::get('/exercises/create/test', 'testController@getCreate');
+Route::post('/exercises/postCreate','testController@postCreate');
 
 
 /* Route for User Profile */

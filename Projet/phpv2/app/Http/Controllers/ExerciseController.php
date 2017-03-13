@@ -29,19 +29,20 @@ class ExerciseController extends Controller
     {
         return view('exercises/create');
     }
-    public function getCreateTest()
-    {
-        return view('exercises/test');
-    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreate()
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function postCreate(Exercise $exercise, Request $request)
     {
-        //
+      $exo = Exercise::create([
+        'name' => $request['nomExo'],
+        'description' => $request['descriptionExo'],
+      ]);
+
+      return view('exercises/test', ['exercise' => $exo->id]);
     }
 
     /**
