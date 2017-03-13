@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col s4">
           <h3>Tests</h3>
-          @if(isset($tests))
+          @if(!empty($tests))
             @if(count($tests['tests']) > 0)
               @foreach($tests['tests'] as $test)
                 <div>
@@ -49,15 +49,15 @@
         </div>
         <div class="col s8">
           <h3>Résultats</h3>
-              @if(isset($console))
+              @if(!empty($console))
               <p>
                 @if(isset($console['errors']))
                   {!! $console['errors'] !!}
                 @endif
               </p>
-              <b>Affichage de sortie</b>
-              <p>
-                @if(isset($console['exit']))
+              @if(isset($console['exit']))
+                <b>Affichage de sortie</b>
+                <p>
                   {!! $console['exit'] !!}
                 @endif
               </p>
