@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exercise;
 use Illuminate\Http\Request;
 use ParseError;
+use Tests\Feature\ExerciseTest;
 
 class ExerciseController extends Controller
 {
@@ -101,33 +102,49 @@ class ExerciseController extends Controller
 
     public function resolve(Exercise $exercise, Request $request)
     {
-        $code = $request->input('myanswer');
+        $code = $request->input('code');
         $console = [];
 
         // exécute code and see synthax errors
-        $error = $this->evaluate($code);
-        if (!empty($error)) {
+
+        $errors = $this->evaluate($code, $exercise);
+
+        if (!empty($errors) && !empty($errors['errors'])) {
             // renvoyer les errors sur le retour console
-            $console['errors'] = $error;
+            $console['errors'] = $errors['errors'] . '<br>';
         } else {
-            $console['errors'] = 'aucune erreur n\'a été détecté';
+            $console['errors'] = 'aucune erreur n\'a été détecté' . '<br>';
+        }
+
+
+        // tests validés
+
+        if (!empty($errors) && !empty($errors['tests'])) {
+            // renvoyer les resultats tests sur le retour console
+            $console['tests'] = $errors['tests'] . '<br>';
+        } else {
+            $console['errors'] = 'Tests validés' . '<br>';
         }
 
         return view('exercises/panel_resolve', ['console' => $console]);
 
     }
 
-    private function evaluate($code)
+    private function evaluate($code, $exercise)
     {
         try {
             ob_start();
             eval($code);
+            //get all variables executed
+            $variables = get_defined_vars();
             $content = ob_get_contents();
             ob_end_clean();
-            var_dump($content);
-            //tests
+            $variables['content_ob'] = $content;
+            $test_class = new ExerciseTest();
+            $result = $test_class->test($exercise, $variables);
+            return ['tests' => $result];
         } catch (ParseError $e) {
-            return $e->getMessage();
+            return ['errors' => $e->getMessage()];
         }
     }
 
