@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class test extends Model
+class Test extends Model
 {
-  use Notifiable;
 
   /**
    * The attributes that are mass assignable.
@@ -14,7 +13,7 @@ class test extends Model
    * @var array
    */
   protected $fillable = [
-      'name', 'description', 'code',
+      'name', 'description', 'code'
   ];
 
   /**

@@ -2,11 +2,10 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class Exercise
+class Exercise extends Model
 {
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

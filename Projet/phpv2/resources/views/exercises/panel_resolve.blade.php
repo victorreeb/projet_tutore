@@ -18,11 +18,12 @@
                   left: 0;
               }
           </style>
-          <div id="editor" style="width:100%;height:300px;"></div>
+          <div id="editor" style="width:100%;height:350px;"></div>
+          <br>
           <form id="code" action="{{ action('ExerciseController@resolve') }}" method="POST">
             <input type="hidden" name="code" style="display: none;">
             {{ csrf_field() }}
-            <button type="submit">Tester</button>
+            <button class="btn waves-effect waves-light" type="submit">Tester</button>
           </form>
 
         </div>
@@ -30,21 +31,37 @@
       <div class="row">
         <div class="col s4">
           <h3>Tests</h3>
-          <p>Test 1</p>
-
+          @if(isset($tests))
+            @if(count($tests['tests']) > 0)
+              @foreach($tests['tests'] as $test)
+                <div>
+                  <b>{{$test->name}}</b>
+                  <p>{{$test->description}}</p>
+                  @if($test->result == null)
+                    <p>VALIDE</p>
+                  @else
+                    <p>{{$test->result}}</p>
+                  @endif
+                </div>
+              @endforeach
+            @endif
+          @endif
         </div>
         <div class="col s8">
           <h3>Résultats</h3>
-          <p>
               @if(isset($console))
-                  @if(isset($console['errors']))
-                      {!! $console['errors'] !!}
-                  @endif
-                  @if(isset($console['tests']))
-                      {!! $console['tests'] !!}
-                  @endif
+              <p>
+                @if(isset($console['errors']))
+                  {!! $console['errors'] !!}
+                @endif
+              </p>
+              <b>Affichage de sortie</b>
+              <p>
+                @if(isset($console['exit']))
+                  {!! $console['exit'] !!}
+                @endif
+              </p>
               @endif
-          </p>
         </div>
       </div>
     </div>
