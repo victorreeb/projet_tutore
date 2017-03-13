@@ -119,12 +119,14 @@ class ExerciseController extends Controller
         } else {
             $console['errors'] = 'aucune erreur n\'a été détecté' . '<br>';
         }
+        if (!empty($errors) && !empty($errors['exit'])) {
+          $console['exit'] = $errors['exit'];
+        }
 
 
         // tests validés
-        $console['tests'] = $errors['tests'];
-
-        return view('exercises/panel_resolve', ['console' => $console]);
+        $tests = $errors['tests'];
+        return view('exercises/panel_resolve', ['console' => $console, 'tests' => $tests]);
 
     }
 
@@ -145,7 +147,7 @@ class ExerciseController extends Controller
         }
         $test_class = new ExerciseTest();
         $result = $test_class->test($exercise, $variables);
-        return ['tests' => $result];
+        return ['tests' => $result, 'exit'=> $content];
     }
 
 
