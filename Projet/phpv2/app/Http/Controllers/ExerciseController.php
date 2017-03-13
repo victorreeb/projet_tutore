@@ -23,7 +23,17 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getCreate()
+    {
+        return view('exercises/create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postCreate()
     {
         //
     }

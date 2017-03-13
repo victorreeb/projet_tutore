@@ -9,7 +9,10 @@
                 <div class="panel-heading">Dashboard</div>
                 <div class="panel-body">
                     You are logged in!
-                    <a href="{{ url('/exercises/begin') }}">Commencer exercice test</a>
+                    <h4>Etu</h4><hr>
+                  </br><a href="{{ url('/exercises/begin') }}" class="button btn">Commencer exercice test</a>
+                  <h4>Prof</h4><hr>
+                  </br><a href="{{ url('/exercises/getCreate') }}" class="button btn">Creation exercice</a>
                 </div>
             </div>
         </div>
