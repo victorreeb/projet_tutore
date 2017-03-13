@@ -10,11 +10,11 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="nom" class="materialize-textarea"></textarea>
+                <textarea id="nomExo" class="materialize-textarea"></textarea>
                 <label for="textarea1">Nom de l'exercice</label>
               </div>
               <div class="input-field col s12">
-                <textarea id="description" class="materialize-textarea"></textarea>
+                <textarea id="descriptionExo" class="materialize-textarea"></textarea>
                 <label for="textarea1">Description de l'exercice</label>
               </div>
 
