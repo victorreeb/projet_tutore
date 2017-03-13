@@ -10,17 +10,17 @@
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <textarea id="nomExo" class="materialize-textarea"></textarea>
+                <input type="text" id="nomExo" class="materialize-textarea"></input>
                 <label for="textarea1">Nom de l'exercice</label>
               </div>
               <div class="input-field col s12">
-                <textarea id="descriptionExo" class="materialize-textarea"></textarea>
+                <input type="text" id="descriptionExo" class="materialize-textarea"></input>
                 <label for="textarea1">Description de l'exercice</label>
-              </div>
 
+              </div>
             </div>
           </form>
-        </br><a href="{{ url('/exercises/create/test') }}" type="submit" class="button btn">Suivant</a>
+        </br><button class="btn waves-effect waves-light" type="submit" name="action">Suivant</button>
         </div>
     </div>
 </div>
