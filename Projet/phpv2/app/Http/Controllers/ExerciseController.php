@@ -27,6 +27,10 @@ class ExerciseController extends Controller
     {
         return view('exercises/create');
     }
+    public function getCreateTest()
+    {
+        return view('exercises/test');
+    }
 
     /**
      * Show the form for creating a new resource.
