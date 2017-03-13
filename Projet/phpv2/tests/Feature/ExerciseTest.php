@@ -14,15 +14,21 @@ class ExerciseTest extends TestCase
     public function load(Exercise $exercise)
     {
         // $tests = Test::where('id_exercise', $exercise->id);
-        // return $tests;
+        return   'if(!empty($response["content_ob"])){
+            $this->assertEquals("phpv2", $response["content_ob"]);
+          }';
     }
 
     public function test(Exercise $exercise, $response){
-      // $tests = $this->load($exercise);
-      if(!empty($response)){
-        $this->assertEquals(1, $response['v']);
-        $this->assertEquals(2, $response['w']);
+      $tests = $this->load($exercise);
+      $result['tests'] = [];
+      var_dump($tests);
+      // foreach($tests as $test) {
+        // test1 => $test->name
+        $result['tests']['test1'] = eval($tests);
+      // }
+      var_dump($result);
+      return $result;
 
-      }
     }
 }

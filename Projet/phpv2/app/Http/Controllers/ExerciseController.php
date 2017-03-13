@@ -111,20 +111,14 @@ class ExerciseController extends Controller
 
         if (!empty($errors) && !empty($errors['errors'])) {
             // renvoyer les errors sur le retour console
-            $console['errors'] = $errors['errors'] . '<br>';
+            $console['errors'] = $errors['errors'];
         } else {
             $console['errors'] = 'aucune erreur n\'a été détecté' . '<br>';
         }
 
 
         // tests validés
-
-        if (!empty($errors) && !empty($errors['tests'])) {
-            // renvoyer les resultats tests sur le retour console
-            $console['tests'] = $errors['tests'] . '<br>';
-        } else {
-            $console['errors'] = 'Tests validés' . '<br>';
-        }
+        $console['tests'] = $errors['tests'];
 
         return view('exercises/panel_resolve', ['console' => $console]);
 
@@ -142,12 +136,12 @@ class ExerciseController extends Controller
             $content = ob_get_contents();
             ob_end_clean();
             $variables['content_ob'] = $content;
-            $test_class = new ExerciseTest();
-            $result = $test_class->test($exercise, $variables);
-            return ['tests' => $result];
         } catch (ParseError $e) {
             return ['errors' => $e->getMessage()];
         }
+        $test_class = new ExerciseTest();
+        $result = $test_class->test($exercise, $variables);
+        return ['tests' => $result];
     }
 
 
