@@ -10,11 +10,21 @@
         </div>
         <div class="col s6">
           <h3>Votre réponse</h3>
+          <style type="text/css" media="screen">
+              #editor {
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+              }
+          </style>
+          <div id="editor" style="width:100%;height:300px;"></div>
           <form id="code" action="{{ action('ExerciseController@resolve') }}" method="POST">
-              <textarea name="code" rows="10" cols="50"></textarea>
-              {{ csrf_field() }}
-              <button type="submit">VALIDER</button>
+            <input type="hidden" name="code" style="display: none;">
+            {{ csrf_field() }}
+            <button type="submit">Tester</button>
           </form>
+
         </div>
       </div>
       <div class="row">
@@ -41,4 +51,15 @@
     <div>
 
     </div>
+    <script src="{{ asset('js/ace-src/ace.js') }}" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setValue("<\?php");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/php");
+        var input = $('input[name="code"]');
+          editor.getSession().on("change", function () {
+          input.val(editor.getSession().getValue());
+        });
+    </script>
 @endsection
