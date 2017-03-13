@@ -8,14 +8,9 @@
           <h3>Création Exercice</h3><hr>
               <h4>Ajout des tests</h4>
               <form action="#">
-                <div class="file-field input-field">
-                  <div class="btn">
-                    <span>File</span>
-                    <input type="file" multiple>
-                  </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text" placeholder="Upload one or more test">
-                  </div>
+                <div class="input-field col s12">
+                  <textarea id="nom" class="materialize-textarea"></textarea>
+                  <label for="textarea1">Nom de l'exercice</label>
                 </div>
               </form>
             </div>
