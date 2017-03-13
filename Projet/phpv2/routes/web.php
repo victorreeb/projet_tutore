@@ -23,8 +23,10 @@ Route::get('/exercises/resolve','ExerciseController@begin');
 Route::post('/exercises/resolve','ExerciseController@resolve');
 
 /* Route for Creat exercises */
-Route::get('/exercises/getCreate', 'ExerciseController@getCreate');
+Route::get('/exercises/create', 'ExerciseController@getCreate');
+Route::get('/exercises/create/test', 'ExerciseController@getCreateTest');
 Route::post('/exercises/postCreate','ExerciseController@postCreate');
+
 
 
 /* Route for User Profile */

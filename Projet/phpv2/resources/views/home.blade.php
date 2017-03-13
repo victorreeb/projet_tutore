@@ -12,7 +12,7 @@
                     <h4>Etu</h4><hr>
                   </br><a href="{{ url('/exercises/resolve') }}" class="button btn">Commencer exercice test</a>
                   <h4>Prof</h4><hr>
-                  </br><a href="{{ url('/exercises/getCreate') }}" class="button btn">Creation exercice</a>
+                </br><a href="{{ url('/exercises/create') }}" class="button btn">Creation exercice</a>
                 </div>
             </div>
         </div>
