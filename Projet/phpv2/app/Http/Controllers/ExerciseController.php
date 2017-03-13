@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
+use Exception;
 use Illuminate\Http\Request;
-use ParseError;
+use PHPSandbox\PHPSandbox;
 use Tests\Feature\ExerciseTest;
 
 class ExerciseController extends Controller
@@ -108,7 +109,6 @@ class ExerciseController extends Controller
     {
         $code = $request->input('code');
         $console = [];
-
         // exécute code and see synthax errors
 
         $errors = $this->evaluate($code, $exercise);
@@ -122,32 +122,43 @@ class ExerciseController extends Controller
         if (!empty($errors) && !empty($errors['exit'])) {
           $console['exit'] = $errors['exit'];
         }
+        if(!empty($errors) && empty($errors['tests'])){
+          return view('exercises/panel_resolve', ['console' => $console]);
+        }
 
-
-        // tests validés
-        $tests = $errors['tests'];
-        return view('exercises/panel_resolve', ['console' => $console, 'tests' => $tests]);
+        return view('exercises/panel_resolve', ['console' => $console, 'tests' => $errors['tests']]);
 
     }
 
     private function evaluate($code, $exercise)
     {
         //enlève le balisage propre à php
+        $errors = '';
+        $result = '';
+        $content = '';
+        $variables = [];
         $code = str_replace("<?php", "", $code);
         try {
             ob_start();
-            eval($code);
+            $sandbox = new PHPSandbox();
+            $sandbox->setOption('validate_functions', false);
+            $result = $sandbox->execute($code);
             //get all variables executed
             $variables = get_defined_vars();
             $content = ob_get_contents();
             ob_end_clean();
             $variables['content_ob'] = $content;
-        } catch (ParseError $e) {
-            return ['errors' => $e->getMessage()];
+        } catch (Exception $e) {
+          $errors = $e->getMessage();
         }
-        $test_class = new ExerciseTest();
-        $result = $test_class->test($exercise, $variables);
-        return ['tests' => $result, 'exit'=> $content];
+        if(!empty($errors)){
+          return ['errors' => $errors];
+        }
+        else{
+          $test_class = new ExerciseTest();
+          $result = $test_class->test($exercise, $variables);
+          return ['tests' => $result, 'exit'=> $content];
+        }
     }
 
 

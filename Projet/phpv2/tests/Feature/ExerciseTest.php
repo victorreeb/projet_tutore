@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use App\Exercise;
 use App\Test;
+use Exception;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -22,7 +23,12 @@ class ExerciseTest extends TestCase
       $result['tests'] = [];
       if(!empty($tests)){
         foreach($tests as $test) {
-          $test->result = eval($test->code);
+          try{
+            $test->result = eval($test->code);
+          }
+          catch(Exception $e){
+            $test->result = $e->getMessage();
+          }
           $result['tests'][] = $test;
         }
       }
