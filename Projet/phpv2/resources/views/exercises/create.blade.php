@@ -20,7 +20,7 @@
 
             </div>
           </form>
-        </br><a href="{{ url('/exercises/create/test') }}" class="button btn">Suivant</a>
+        </br><a href="{{ url('/exercises/create/test') }}" type="submit" class="button btn">Suivant</a>
         </div>
     </div>
 </div>

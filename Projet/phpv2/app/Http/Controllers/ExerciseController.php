@@ -33,14 +33,35 @@ class ExerciseController extends Controller
         return view('exercises/test');
     }
 
+
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreate()
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function postCreate(Exercise $exercise, Request $request)
     {
-        //
+      Exercise::create([
+        'name' => $request['nomExo'],
+        'description' => $request['descriptionExo'],
+      ]);
+      return view('exercises/create');
+    }
+
+    /**
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function postCreateTest(Exercise $exercise, Test $test, Request $request)
+    {
+      Test::create([
+        'name' => $request['nomTest'],
+        'description' => $request['descriptionTest'],
+        'code' => $request['codeTest'],
+      ]);
+
+      return view('exercises/create');
     }
 
     /**
