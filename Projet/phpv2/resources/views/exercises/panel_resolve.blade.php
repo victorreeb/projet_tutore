@@ -3,12 +3,12 @@
 @section('content')
     <div class="flex-container">
       <div class="row">
-        <div class="col s6">
+        <div class="col s4">
           <h3>Enoncé</h3>
           <p>Afficher "phpv2" dans la console</p>
           <p>Astuce : utilisez la méthode echo</p>
         </div>
-        <div class="col s6">
+        <div class="col s8">
           <h3>Votre réponse</h3>
           <style type="text/css" media="screen">
               #editor {
@@ -28,8 +28,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s6">
-          <h3>Console</h3>
+        <div class="col s4">
+          <h3>Tests</h3>
+          <p>Test 1</p>
+
+        </div>
+        <div class="col s8">
+          <h3>Résultats</h3>
           <p>
               @if(isset($console))
                   @if(isset($console['errors']))
@@ -40,10 +45,6 @@
                   @endif
               @endif
           </p>
-        </div>
-        <div class="col s6">
-          <h3>Tests</h3>
-          <p>Test 1</p>
         </div>
       </div>
     </div>
