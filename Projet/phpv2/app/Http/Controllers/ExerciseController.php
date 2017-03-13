@@ -132,6 +132,8 @@ class ExerciseController extends Controller
 
     private function evaluate($code, $exercise)
     {
+        //enlève le balisage propre à php
+        $code = str_replace("<?php", "", $code);
         try {
             ob_start();
             eval($code);

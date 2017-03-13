@@ -22,7 +22,6 @@ class ExerciseTest extends TestCase
       if(!empty($response)){
         $this->assertEquals(1, $response['v']);
         $this->assertEquals(2, $response['w']);
-        $this->assertEquals("php", $response['content_ob']);
 
       }
     }
