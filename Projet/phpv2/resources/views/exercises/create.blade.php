@@ -11,7 +11,6 @@
             {{ csrf_field() }}
             <div class="row">
               <div class="input-field col s12">
-<<<<<<< HEAD
                 <input type="text" id="name" name="name" class="materialize-textarea"></input>
                 <label for="name">Nom</label>
               </div>
@@ -19,14 +18,6 @@
                 <input type="text" id="description" name="description" class="materialize-textarea"></input>
                 <label for="description">Consigne</label>
               </div>
-=======
-                <input type="text" id="nomExo" class="materialize-textarea"></input>
-                <label for="textarea1">Nom de l'exercice</label>
-              </div>
-              <div class="input-field col s12">
-                <input type="text" id="descriptionExo" class="materialize-textarea"></input>
-                <label for="textarea1">Description de l'exercice</label>
->>>>>>> master
 
               </div>
             </div>
@@ -34,10 +25,6 @@
               Suivant
             </button>
           </form>
-<<<<<<< HEAD
-=======
-        </br><button class="btn waves-effect waves-light" type="submit" name="action">Suivant</button>
->>>>>>> master
         </div>
     </div>
 </div>
