@@ -18,7 +18,7 @@
         <nav>
             <div class="nav-wrapper">
                 @if (Route::has('login'))
-                <a href="#" class="brand-logo">PHPv2</a>
+                <a href="{{ url('/home') }}" class="brand-logo">PHPv2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
 

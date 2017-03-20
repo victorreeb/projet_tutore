@@ -11,20 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Auth::routes();
 
-Route::get('/hello', 'HomeController@toto');
-
+Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/exercises/resolve','ExerciseController@begin');
 Route::post('/exercises/resolve','ExerciseController@resolve');
 
 /* Route for Creat exercises */
+<<<<<<< HEAD
+Route::get('/exercises/create', 'ExerciseController@create')->name('exercise.create');
+Route::post('/exercises/create','ExerciseController@store');
+Route::get('/exercises/{id}', 'ExerciseController@show')->name('exercise.show');
+Route::get('/exercises/{id}/tests', 'TestController@create')->name('test.create');
+Route::post('/exercises/{id}/tests','TestController@store');
+=======
 Route::get('/exercises/create', 'ExerciseController@getCreate');
 Route::post('/exercises/postCreate','ExerciseController@postCreate');
+>>>>>>> master
 
 /* Route for add test for exercices */
 Route::get('/exercises/create/test', 'testController@getCreate');

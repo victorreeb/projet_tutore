@@ -23,8 +23,9 @@
     </script>
 </head>
 <body>
-
+  <div class="container">
     @yield('content')
+  </div>
     @yield('navbar')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

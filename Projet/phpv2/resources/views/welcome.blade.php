@@ -16,10 +16,10 @@
     </div>
 </div>
 
-    <footer class="row">
+    <!-- <footer class="row">
         Projet tutoré 2016
-        <!-- @include('includes.footer') -->
-    </footer>
+        @include('includes.footer')
+    </footer> -->
 
 
 </body>
