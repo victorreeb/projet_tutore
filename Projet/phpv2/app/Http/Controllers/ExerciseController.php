@@ -6,6 +6,7 @@ use App\Exercise;
 use Exception;
 use Illuminate\Http\Request;
 use PHPSandbox\PHPSandbox;
+use Illuminate\Support\Facades\Validator;
 use Tests\Feature\ExerciseTest;
 
 class ExerciseController extends Controller
@@ -25,23 +26,17 @@ class ExerciseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCreate()
+    public function create()
     {
         return view('exercises/create');
     }
-    public function getCreateTest()
-    {
-        return view('exercises/test');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreate()
+    protected function validator(array $data)
     {
-        //
+        return Validator::make($data, [
+            'name' => 'required|max:255',
+            'description' => 'required|max:255'
+        ]);
     }
 
     /**
@@ -52,7 +47,15 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $validator = $this->validator($request->all());
+      if($validator->fails()){
+        return redirect()->back()->withErrors($validator->errors());
+      }
+      $exercise = new Exercise;
+      $exercise->name = $request->input('name');
+      $exercise->description = $request->input('description');
+      $exercise->save();
+      return redirect()->route('test.create', ['id' => $exercise->id]);
     }
 
     /**
@@ -61,9 +64,10 @@ class ExerciseController extends Controller
      * @param  \App\Exercise $exercise
      * @return \Illuminate\Http\Response
      */
-    public function show(Exercise $exercise)
+    public function show($id)
     {
-        //
+      $exercise = Exercise::where('id', $id)->first();
+        return view('exercises/show', ['exercise' => $exercise]);
     }
 
     /**
@@ -130,7 +134,7 @@ class ExerciseController extends Controller
 
     }
 
-    private function evaluate($code, $exercise)
+    private function evaluate($code, Exercise $exercise)
     {
         //enlève le balisage propre à php
         $errors = '';
