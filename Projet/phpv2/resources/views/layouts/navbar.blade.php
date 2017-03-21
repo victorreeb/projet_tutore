@@ -18,7 +18,7 @@
         <nav>
             <div class="nav-wrapper">
                 @if (Route::has('login'))
-                <a href="{{ url('/home') }}" class="brand-logo">PHPv2</a>
+                <a href="{{ url('/') }}" class="brand-logo">PHPv2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
 
@@ -27,7 +27,7 @@
                                {{ Auth::user()->name }} <span class="caret"></span>
                              </a>
                               <ul class="dropdown-content" role="menu" id='dropdown1'>
-                                  <li><a href="{{ url('/home') }}">Home</a></li>
+                                  <li><a href="{{ url('/') }}">Home</a></li>
                                   <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                                   <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                               </ul>
