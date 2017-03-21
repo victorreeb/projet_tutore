@@ -7,5 +7,6 @@
   Afficher les infos exercise
   <p>{{$exercise->name}}</p>
   <p>{{$exercise->description}}</p>
-  
+  <a href="{{ route('exercise.resolve', $exercise->id) }}">résoudre</a>
+
 @endsection
