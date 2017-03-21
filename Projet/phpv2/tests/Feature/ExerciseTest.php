@@ -15,12 +15,12 @@ class ExerciseTest extends TestCase
 
     public function load(Exercise $exercise)
     {
-        return Test::where('id_exercise', 1)->get();
+        return Test::where('id_exercise', $exercise->id)->get();
     }
 
     public function test(Exercise $exercise, $response){
       $tests = $this->load($exercise);
-      $result['tests'] = [];
+      $result = [];
       if(!empty($tests)){
         foreach($tests as $test) {
           try{
@@ -29,7 +29,9 @@ class ExerciseTest extends TestCase
           catch(Exception $e){
             $test->result = $e->getMessage();
           }
-          $result['tests'][] = $test;
+          if($test->result == null)
+            $test->result = 'validé';
+          $result[] = $test;
         }
       }
       return $result;

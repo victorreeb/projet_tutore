@@ -4,12 +4,11 @@
     <div class="flex-container">
       <div class="row">
         <div class="col s4">
-          <h3>Enoncé</h3>
-          <p>Afficher "phpv2" dans la console</p>
-          <p>Astuce : utilisez la méthode echo</p>
+          <h4>{{ $exercise->name }}</h4>
+          <p>{{ $exercise->description }}</p>
         </div>
         <div class="col s8">
-          <h3>Votre réponse</h3>
+          <h4>Votre réponse</h4>
           <style type="text/css" media="screen">
               #editor {
                   top: 0;
@@ -20,7 +19,7 @@
           </style>
           <div id="editor" style="width:100%;height:350px;"></div>
           <br>
-          <form id="code" action="{{ action('ExerciseController@resolve') }}" method="POST">
+          <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
             <input type="hidden" name="code" style="display: none;">
             {{ csrf_field() }}
             <button class="btn waves-effect waves-light" type="submit">Tester</button>
@@ -30,32 +29,38 @@
       </div>
       <div class="row">
         <div class="col s4">
-          <h3>Tests</h3>
+          <h4>Tests</h4>
           @if(!empty($tests))
-            @if(count($tests['tests']) > 0)
-              @foreach($tests['tests'] as $test)
-                <div>
-                  <b>{{$test->name}}</b>
-                  <p>{{$test->description}}</p>
-                  @if($test->result == null)
-                    <p>VALIDE</p>
-                  @else
-                    <p>{{$test->result}}</p>
-                  @endif
+            @if(count($tests) > 0)
+              @foreach($tests as $test)
+                <div class="row">
+                  <div class="col s4">
+                    <p><b>{{ $test->name }}</b></p>
+                  </div>
+                  <div class="col s4">
+                    <p>{{ $test->description }}</p>
+                  </div>
+                  <div class="col s4">
+                    @if($test->result == null)
+                      <p>en cours</p>
+                    @else
+                      <p>{{ $test->result }}</p>
+                    @endif
+                  </div>
                 </div>
               @endforeach
             @endif
           @endif
         </div>
         <div class="col s8">
-          <h3>Résultats</h3>
+          <h4>Résultats</h4>
               @if(!empty($console))
               <p>
-                @if(isset($console['errors']))
+                @if(!empty($console['errors']))
                   {!! $console['errors'] !!}
                 @endif
               </p>
-              @if(isset($console['exit']))
+              @if(!empty($console['exit']))
                 <b>Affichage de sortie</b>
                 <p>
                   {!! $console['exit'] !!}
