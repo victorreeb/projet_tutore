@@ -12,6 +12,7 @@
       <div class="col s6">
         <h4>Vous êtes professeur ?</h4>
         <p>décrire ce qu'est un professeur et ce qu'il peut faire</p>
+        <a href="{{ route('exercise.create') }}">ajouter un exercice</a>
       </div>
     </div>
 </div>

@@ -14,7 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
 Route::get('/exercises/{id}/resolve','ExerciseController@begin')->name('exercise.resolve');
 Route::post('/exercises/{id}/resolve','ExerciseController@resolve');
 
