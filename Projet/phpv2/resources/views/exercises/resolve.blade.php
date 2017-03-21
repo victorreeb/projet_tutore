@@ -31,7 +31,7 @@
         <div class="col s4">
           <h4>Tests</h4>
           @if(!empty($tests))
-            @if(count($tests) > 0)
+            @if(sizeof($tests) > 0)
               @foreach($tests as $test)
                 <div class="row">
                   <div class="col s4">

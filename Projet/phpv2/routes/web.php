@@ -19,7 +19,7 @@ Route::get('/exercises/{id}/resolve','ExerciseController@begin')->name('exercise
 Route::post('/exercises/{id}/resolve','ExerciseController@resolve');
 
 /* Route for Creat exercises */
-Route::get('/exercises','ExerciseController@index');
+Route::get('/exercises','ExerciseController@index')->name('exercise.index');
 Route::get('/exercises/create', 'ExerciseController@create')->name('exercise.create');
 Route::post('/exercises/create','ExerciseController@store');
 Route::get('/exercises/{id}', 'ExerciseController@show')->name('exercise.show');
