@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exercise;
+use App\Test;
 use Exception;
 use Illuminate\Http\Request;
 use PHPSandbox\PHPSandbox;
@@ -18,7 +19,8 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        //
+        $exercises = Exercise::all();
+        return view('exercises/index', ['exercises' => $exercises]);
     }
 
     /**
@@ -104,13 +106,17 @@ class ExerciseController extends Controller
         //
     }
 
-    public function begin(Exercise $exercise)
+    public function begin($id)
     {
-        return view('exercises/panel_resolve');
+      $exercise = Exercise::where('id', $id)->first();
+      $tests = Test::where('id_exercise', $id)->get();
+      return view('exercises/resolve', ['id' => $exercise->id ,'exercise' => $exercise, 'tests' => $tests]);
     }
 
-    public function resolve(Exercise $exercise, Request $request)
+
+    public function resolve(Request $request)
     {
+        $exercise = Exercise::where('id', $request->route('id'))->first();
         $code = $request->input('code');
         $console = [];
         // exécute code and see synthax errors
@@ -127,11 +133,10 @@ class ExerciseController extends Controller
           $console['exit'] = $errors['exit'];
         }
         if(!empty($errors) && empty($errors['tests'])){
-          return view('exercises/panel_resolve', ['console' => $console]);
+          return view('exercises/resolve', ['id' => $exercise->id, 'exercise' => $exercise, 'console' => $console]);
         }
 
-        return view('exercises/panel_resolve', ['console' => $console, 'tests' => $errors['tests']]);
-
+        return view('exercises/resolve', ['id' => $exercise->id, 'exercise' => $exercise, 'console' => $console, 'tests' => $errors['tests']]);
     }
 
     private function evaluate($code, Exercise $exercise)

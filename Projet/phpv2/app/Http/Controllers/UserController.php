@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
-use Intervention\Image\ImageManager;
+use Intervention\Image\ImageManager as Image;
 
 
 class UserController extends Controller
@@ -21,10 +21,7 @@ class UserController extends Controller
     	if($request->hasFile('avatar')){
     		$avatar = $request->file('avatar');
     		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-    		// Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
-        $manager = new ImageManager(array('driver' => 'imagick'));
-        $manager->make('image.jpg')->fit(500, 500)->save('thumb.jpg');
-
+    		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
     		$user = Auth::user();
     		$user->avatar = $filename;
     		$user->save();

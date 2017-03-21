@@ -7,4 +7,5 @@
   Afficher les infos exercise
   <p>{{$exercise->name}}</p>
   <p>{{$exercise->description}}</p>
+  
 @endsection
