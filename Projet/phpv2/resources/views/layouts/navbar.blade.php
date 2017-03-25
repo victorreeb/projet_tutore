@@ -23,7 +23,7 @@
                         @if (Auth::check())
 
                             <a href="#" class="dropdown-button btn" data-activates='dropdown1' role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
-                               <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%">
+                               <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:1px; left:5px; border-radius:50%">
                                {{ Auth::user()->name }} <span class="caret"></span>
                              </a>
                               <ul class="dropdown-content" role="menu" id='dropdown1'>
