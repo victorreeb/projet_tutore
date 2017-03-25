@@ -11,7 +11,7 @@ class TestController extends Controller
 
   public function create($id)
   {
-      return view('tests/create', ["id_exercise" => $id]);
+      return view('exercises/tests/create', ["id_exercise" => $id]);
   }
 
   protected function validator(array $data)
