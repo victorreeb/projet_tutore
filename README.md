@@ -1,6 +1,6 @@
 <snippet>
   <content><![CDATA[
-# ${1:PhPv2}
+# PHPV2
   Projet tutoré LP Cisiie
 ## Installation
   Créer une base de données mysql
@@ -11,7 +11,7 @@
   Lancez un serveur Laravel : php artisan serve
   Lancez sur un navigateur : localhost:8000
 ## Usage
-  PHPv2 est une plateforme d'auto-apprentissage pour le langage PHP.
+  PHPV2 est une plateforme d'auto-apprentissage pour le langage PHP.
 ## History
   
 ## Credits
