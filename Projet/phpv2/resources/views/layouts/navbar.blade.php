@@ -21,20 +21,19 @@
                 <a href="{{ url('/') }}" class="brand-logo">PHPv2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
-
                             <a href="#" class="dropdown-button btn" data-activates='dropdown1' role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
                                <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:1px; left:5px; border-radius:50%">
                                {{ Auth::user()->name }} <span class="caret"></span>
                              </a>
                               <ul class="dropdown-content" role="menu" id='dropdown1'>
-                                  <li><a href="{{ url('/') }}">Home</a></li>
-                                  <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
-                                  <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                  <li><a href="{{ url('/') }}">Accueil</a></li>
+                                  <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
+                                  <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
                               </ul>
 
                         @else
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">Connexion</a></li>
+                            <li><a href="{{ url('/register') }}">Inscription</a></li>
                         @endif
                 </ul>
                 @endif

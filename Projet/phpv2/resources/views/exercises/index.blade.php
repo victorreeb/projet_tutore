@@ -3,6 +3,7 @@
 
 @section('content')
   <h4>Index exercices</h4>
+  <p><a class="waves-effect waves-light btn" href="{{ route('exercise.create') }}">ajouter un exercice</a></p>
   @if(sizeof($exercises) > 0)
   <table class="responsive-table">
         <thead>

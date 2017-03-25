@@ -35,4 +35,4 @@ Route::post('/exercises/postCreate','testController@postCreate');
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/profile', 'UserController@update_avatar');
 
-Route::get('/logout'); /* todo */
+Route::get('/logout', 'Auth\LoginController@logout');
