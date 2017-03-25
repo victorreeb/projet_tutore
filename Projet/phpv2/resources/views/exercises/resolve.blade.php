@@ -5,7 +5,9 @@
       <div class="row">
         <div class="col s4">
           <h4>{{ $exercise->name }}</h4>
-          <p>{{ $exercise->description }}</p>
+          <p>Consigne : {{ $exercise->description }}</p>
+          <hr>
+          <p>Astuces : {{ $exercise->astuce }}</p>
         </div>
         <div class="col s8">
           <br>
@@ -71,6 +73,7 @@
               @endif
         </div>
         <div class="col s2">
+          <h4>Actions</h4>
           <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
             <input type="hidden" name="code" style="display: none;">
             {{ csrf_field() }}
