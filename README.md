@@ -1,5 +1,4 @@
-<snippet>
-  <content><![CDATA[
+
 # PHPV2
   Projet tutoré LP Cisiie
 ## Installation
@@ -16,6 +15,3 @@
   
 ## Credits
   Victor Reeb, Pierre Becker, Hugo Torzuoli, Vivien Larrière
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
