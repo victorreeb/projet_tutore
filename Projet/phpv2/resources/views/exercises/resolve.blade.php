@@ -5,10 +5,12 @@
       <div class="row">
         <div class="col s4">
           <h4>{{ $exercise->name }}</h4>
-          <p>{{ $exercise->description }}</p>
+          <p>Consigne : {{ $exercise->description }}</p>
+          <hr>
+          <p>Astuces : {{ $exercise->astuce }}</p>
         </div>
         <div class="col s8">
-          <h4>Votre réponse</h4>
+          <br>
           <style type="text/css" media="screen">
               #editor {
                   top: 0;
@@ -18,13 +20,6 @@
               }
           </style>
           <div id="editor" style="width:100%;height:350px;"></div>
-          <br>
-          <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
-            <input type="hidden" name="code" style="display: none;">
-            {{ csrf_field() }}
-            <button class="btn waves-effect waves-light" type="submit">Tester</button>
-          </form>
-
         </div>
       </div>
       <div class="row">
@@ -32,28 +27,37 @@
           <h4>Tests</h4>
           @if(!empty($tests))
             @if(sizeof($tests) > 0)
-              @foreach($tests as $test)
-                <div class="row">
-                  <div class="col s4">
-                    <p><b>{{ $test->name }}</b></p>
-                  </div>
-                  <div class="col s4">
-                    <p>{{ $test->description }}</p>
-                  </div>
-                  <div class="col s4">
-                    @if($test->result == null)
-                      <p>en cours</p>
-                    @else
-                      <p>{{ $test->result }}</p>
-                    @endif
-                  </div>
-                </div>
-              @endforeach
+              <table class="responsive-table">
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Résultat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($tests as $test)
+                  <tr>
+                    <td><p>{{ $test->name }}</p></td>
+                    <td><p>{{ $test->description }}</p></td>
+                    <td>
+                      @if($test->result == null)
+                        <p class="amber-text">en cours</p>
+                      @elseif($test->result == "validé")
+                        <p class="green-text text-darken-3">{{ $test->result }}</p>
+                      @else
+                        <p class="red-text text-darken-4">{{ $test->result }}</p>
+                      @endif
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
             @endif
           @endif
         </div>
-        <div class="col s8">
-          <h4>Résultats</h4>
+        <div class="col s6">
+          <h4>Résultat</h4>
               @if(!empty($console))
               <p>
                 @if(!empty($console['errors']))
@@ -67,6 +71,14 @@
                 @endif
               </p>
               @endif
+        </div>
+        <div class="col s2">
+          <h4>Actions</h4>
+          <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
+            <input type="hidden" name="code" style="display: none;">
+            {{ csrf_field() }}
+            <button class="btn waves-effect waves-light" type="submit">Soumettre</button>
+          </form>
         </div>
       </div>
     </div>

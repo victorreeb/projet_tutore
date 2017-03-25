@@ -7,7 +7,7 @@
   <table class="responsive-table">
         <thead>
           <tr>
-              <th>Nnom</th>
+              <th>Nom</th>
               <th>Description</th>
               <th>Actions</th>
           </tr>

@@ -2,11 +2,18 @@
 @extends('layouts.navbar')
 
 @section('content')
-  <h3>Page d'un Exercice</h3>
-
-  Afficher les infos exercise
-  <p>{{$exercise->name}}</p>
-  <p>{{$exercise->description}}</p>
-  <a href="{{ route('exercise.resolve', $exercise->id) }}">résoudre</a>
+  <div class="row">
+    <div class="col s12">
+      <div class="card blue-grey lighten-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{$exercise->name}}</span>
+          <p>{{$exercise->description}}</p>
+        </div>
+        <div class="card-action grey lighten-3">
+          <a href="{{ route('exercise.resolve', $exercise->id) }}">résoudre</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection

@@ -37,7 +37,8 @@ class ExerciseController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'description' => 'required|max:255'
+            'description' => 'required|max:255',
+            'astuce' => 'required|max:255'
         ]);
     }
 
@@ -56,6 +57,7 @@ class ExerciseController extends Controller
       $exercise = new Exercise;
       $exercise->name = $request->input('name');
       $exercise->description = $request->input('description');
+      $exercise->astuce = $request->input('astuce');
       $exercise->save();
       return redirect()->route('test.create', ['id' => $exercise->id]);
     }
