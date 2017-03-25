@@ -22,6 +22,7 @@ class ExerciseTest extends TestCase
       $tests = $this->load($exercise);
       $result = [];
       if(!empty($tests)){
+        $validated = true;
         foreach($tests as $test) {
           try{
             $test->result = eval($test->code);
@@ -29,12 +30,16 @@ class ExerciseTest extends TestCase
           catch(Exception $e){
             $test->result = $e->getMessage();
           }
-          if($test->result == null)
+          if($test->result == null){
             $test->result = 'validé';
+          }
+          else{
+            $validated = false;
+          }
           $result[] = $test;
         }
       }
-      return $result;
+      return ['result' => $result, 'validated' => $validated];
 
     }
 }

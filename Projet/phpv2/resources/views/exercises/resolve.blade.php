@@ -58,6 +58,9 @@
         </div>
         <div class="col s6">
           <h4>Résultat</h4>
+            @if(isset($validated) and $validated == true)
+              <p class="green-text text-darken-3">exercice résolu</p>
+            @else
               @if(!empty($console))
               <p>
                 @if(!empty($console['errors']))
@@ -71,14 +74,23 @@
                 @endif
               </p>
               @endif
+            @endif
         </div>
         <div class="col s2">
           <h4>Actions</h4>
-          <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
-            <input type="hidden" name="code" style="display: none;">
-            {{ csrf_field() }}
-            <button class="btn waves-effect waves-light" type="submit">Soumettre</button>
-          </form>
+          @if(isset($validated) and $validated == true)
+            <form id="code" action="{{ route('exercise.show', ['id' => $exercise->id]) }}" method="GET">
+              <input type="hidden" name="code" style="display: none;">
+              {{ csrf_field() }}
+              <button class="btn waves-effect waves-light" type="submit">Terminer</button>
+            </form>
+          @else
+            <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
+              <input type="hidden" name="code" style="display: none;">
+              {{ csrf_field() }}
+              <button class="btn waves-effect waves-light" type="submit">Soumettre</button>
+            </form>
+          @endif
         </div>
       </div>
     </div>
