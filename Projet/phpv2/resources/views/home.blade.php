@@ -16,7 +16,8 @@
                 <p>Enfin l’étudiant pourra suivre les différents exercices qu’il a résolu ou qui sont en cours de résolution.</p>
               </div>
               <div class="card-action">
-                <a href="{{ route('exercise.index') }}">accéder aux exercices</a>
+                <p><a href="{{ route('exercise.index') }}">accéder aux exercices</a></p>
+                <p><a href="{{ route('groupe.index') }}">accéder aux groupes</a></p>
               </div>
             </div>
           </div>
@@ -32,7 +33,8 @@
                 <p>L’enseignant peut aussi gérer un groupe d’étudiants en leur proposant des exercices et en invitant différents étudiants dans ce groupe</p>
               </div>
               <div class="card-action">
-                <a href="{{ route('exercise.create') }}">ajouter un exercice</a>
+                <p><a href="{{ route('exercise.create') }}">ajouter un exercice</a></p>
+                <p><a href="{{ route('groupe.create') }}">créer un groupe</a></p>
               </div>
             </div>
           </div>

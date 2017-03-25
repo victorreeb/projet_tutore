@@ -13,7 +13,8 @@ class CreateUsersGroupesTable extends Migration
      */
     public function up()
     {
-      Schema::create('users_groupes', function (Blueprint $table) {
+      Schema::create('user_groupes', function (Blueprint $table) {
+        $table->increments('id');
         $table->integer('id_group');
         $table->integer('id_user');
         $table->timestamps();
@@ -27,6 +28,6 @@ class CreateUsersGroupesTable extends Migration
      */
     public function down()
     {
-      Schema::dropIfExists('users_groupes');
+      Schema::dropIfExists('user_groupes');
     }
 }

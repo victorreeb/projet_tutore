@@ -11,13 +11,16 @@
 |
 */
 
-Auth::routes();
-
+/* default route */
 Route::get('/', 'HomeController@index');
+
+/* Route for Auth */
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
+
+/* Route for Exercise */
 Route::get('/exercises/{id}/resolve','ExerciseController@begin')->name('exercise.resolve');
 Route::post('/exercises/{id}/resolve','ExerciseController@resolve');
-
-/* Route for Creat exercises */
 Route::get('/exercises','ExerciseController@index')->name('exercise.index');
 Route::get('/exercises/create', 'ExerciseController@create')->name('exercise.create');
 Route::post('/exercises/create','ExerciseController@store');
@@ -25,14 +28,16 @@ Route::get('/exercises/{id}', 'ExerciseController@show')->name('exercise.show');
 Route::get('/exercises/{id}/tests', 'TestController@create')->name('test.create');
 Route::post('/exercises/{id}/tests','TestController@store');
 
+/* Route for Groupe */
+Route::get('/groupes','GroupeController@index')->name('groupe.index');
+Route::get('/groupes/create', 'GroupeController@create')->name('groupe.create');
+Route::post('/groupes/create','GroupeController@store');
+Route::get('/groupes/{id}', 'GroupeController@show')->name('groupe.show');
 
-/* Route for add test for exercices */
-Route::get('/exercises/create/test', 'testController@getCreate');
-Route::post('/exercises/postCreate','testController@postCreate');
-
+/* Route for UserGroup */
+Route::get('/groupes/{id}/signup', 'UserGroupeController@signup')->name('user.groupe.signup');
+Route::get('/groupes/{id}/signout', 'UserGroupeController@signout')->name('user.groupe.signout');
 
 /* Route for User Profile */
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/profile', 'UserController@update_avatar');
-
-Route::get('/logout', 'Auth\LoginController@logout');

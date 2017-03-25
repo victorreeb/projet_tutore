@@ -26,6 +26,5 @@
 
   @else
     <p>aucun exercice disponible...</p>
-    <a href="{{ route('exercise.create') }}">ajouter un exercice</a>
   @endif
 @endsection

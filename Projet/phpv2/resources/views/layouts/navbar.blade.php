@@ -18,7 +18,7 @@
         <nav>
             <div class="nav-wrapper">
                 @if (Route::has('login'))
-                <a href="{{ url('/') }}" class="brand-logo">PHPv2</a>
+                <a href="{{ url('/') }}" class="brand-logo center">PHPv2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
                             <a href="#" class="dropdown-button btn" data-activates='dropdown1' role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
