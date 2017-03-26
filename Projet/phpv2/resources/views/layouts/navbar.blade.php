@@ -16,7 +16,7 @@
 
     </head>
     <body>
-        <nav>
+        <nav class="orange accent-2">
             <div class="nav-wrapper">
                 @if (Route::has('login'))
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
