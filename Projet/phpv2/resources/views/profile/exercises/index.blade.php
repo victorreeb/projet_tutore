@@ -2,6 +2,11 @@
 @extends('layouts.navbar')
 
 @section('content')
+<div class="row">
+  <div class="col s3">
+    @include('profile.partials.sidebar')
+  </div>
+  <div class="col s6">
   <h4>Index exercices</h4>
   @if(sizeof($exercises) > 0)
   <table class="responsive-table">
@@ -17,16 +22,14 @@
             <tr>
               <td><p>{{$exercise->name}}</p></td>
               <td><p>{{$exercise->description}}</p></td>
-              <td>
-                <a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a>
-                <a class="waves-effect waves-light btn" href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}">Résoudre</a>
-              </td>
+              <td><p><a href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a></p></td>
             </tr>
           @endforeach
         </tbody>
       </table>
-
-  @else
-    <p>aucun exercice disponible...</p>
-  @endif
+    @else
+      <p>Vous ne possédez aucun exercice...</p>
+    @endif
+  </div>
+</div>
 @endsection

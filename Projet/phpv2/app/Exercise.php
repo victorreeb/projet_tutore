@@ -13,7 +13,7 @@ class Exercise extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'astuce'
+      'id_teacher', 'name', 'description', 'astuce'
     ];
 
     /**

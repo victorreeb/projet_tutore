@@ -11,7 +11,7 @@ class TestController extends Controller
 
   public function create($id)
   {
-      return view('exercises/tests/create', ["id_exercise" => $id]);
+      return view('profile/exercises/tests/create', ["id_exercise" => $id]);
   }
 
   protected function validator(array $data)
@@ -35,7 +35,7 @@ class TestController extends Controller
     $test->description = $request->input('description');
     $test->code = $request->input('code');
     $test->save();
-    return redirect()->route('exercise.show', ['id' => $id]);
+    return redirect()->route('profile.exercise.index');
   }
 
 }

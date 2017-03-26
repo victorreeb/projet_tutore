@@ -22,16 +22,10 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/exercises/{id}/resolve','ExerciseController@begin')->name('exercise.resolve');
 Route::post('/exercises/{id}/resolve','ExerciseController@resolve');
 Route::get('/exercises','ExerciseController@index')->name('exercise.index');
-Route::get('/exercises/create', 'ExerciseController@create')->name('exercise.create');
-Route::post('/exercises/create','ExerciseController@store');
 Route::get('/exercises/{id}', 'ExerciseController@show')->name('exercise.show');
-Route::get('/exercises/{id}/tests', 'TestController@create')->name('test.create');
-Route::post('/exercises/{id}/tests','TestController@store');
 
 /* Route for Groupe */
 Route::get('/groupes','GroupeController@index')->name('groupe.index');
-Route::get('/groupes/create', 'GroupeController@create')->name('groupe.create');
-Route::post('/groupes/create','GroupeController@store');
 Route::get('/groupes/{id}', 'GroupeController@show')->name('groupe.show');
 
 /* Route for UserGroup */
@@ -41,3 +35,11 @@ Route::get('/groupes/{id}/signout', 'UserGroupeController@signout')->name('user.
 /* Route for User Profile */
 Route::get('/profile', 'UserController@profile')->name('profile');
 Route::post('/profile', 'UserController@update_avatar');
+Route::get('/profile/exercises/create', 'UserExerciseController@create')->name('exercise.create');
+Route::post('/profile/exercises/create','UserExerciseController@store');
+Route::get('/profile/exercises', 'UserExerciseController@index')->name('profile.exercise.index');
+Route::get('/profile/groupes/create', 'UserGroupeController@create')->name('groupe.create');
+Route::post('/profile/groupes/create','UserGroupeController@store');
+Route::get('/profile/groupes', 'UserGroupeController@index')->name('profile.groupe.index');
+Route::get('/profile/exercises/{id}/tests', 'TestController@create')->name('test.create');
+Route::post('/profile/exercises/{id}/tests','TestController@store');
