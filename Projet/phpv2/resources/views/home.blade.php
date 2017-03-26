@@ -15,16 +15,16 @@
         <a class="btn waves-effect white orange-text text-accent-2">Bienvenue sur PHPV2</a>
       @endif
     </div>
-  <div class="carousel-item white-text" href="#one!">
-    <img src="http://lorempixel.com/800/400/food/1">
-    <!-- <img src="{{ asset('storage/nom_image.jpg') }}"> -->
-  </div>
-  <div class="carousel-item white-text" href="#two!">
-    <img src="http://lorempixel.com/800/400/food/2">
-  </div>
-  <div class="carousel-item white-text" href="#three!">
-    <img src="http://lorempixel.com/800/400/food/3">
-  </div>
+    <div class="carousel-item white-text" href="#one!">
+      <img src="{{ asset('storage/img/carrousel/php-1.jpg') }}">
+      <!-- <img src="{{ asset('storage/nom_image.jpg') }}"> -->
+    </div>
+    <div class="carousel-item white-text" href="#two!">
+      <img src="{{ asset('storage/img/carrousel/home/php-2.jpg') }}">
+    </div>
+    <div class="carousel-item white-text" href="#three!">
+      <img src="{{ asset('storage/img/carrousel/home/php-3.jpg') }}">
+    </div>
 </div>
 <div class="row">
     <div class="col s6">
