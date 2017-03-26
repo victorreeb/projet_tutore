@@ -1,5 +1,10 @@
 <?php
 
+
+/*
+    Some fixes thanks to https://github.com/Intervention/image/issues/125 answers
+*/
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
