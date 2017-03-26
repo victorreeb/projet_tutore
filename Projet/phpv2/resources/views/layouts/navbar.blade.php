@@ -21,7 +21,7 @@
                 @if (Route::has('login'))
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                   <li><a href="{{ url('/') }}">Accueil</a></li>
-                  <li><a href="{{ route('exercise.index') }}">Exercises</a></li>
+                  <li><a href="{{ route('exercise.index') }}">Exercices</a></li>
                   <li><a href="{{ route('groupe.index') }}">Groupes</a></li>
                 </ul>
                 <a href="{{ url('/') }}" class="brand-logo center">PHPv2</a>
