@@ -1,19 +1,46 @@
+## Projet Tutoré CISIIE
 
-# PHPV2
-  Projet tutoré LP Cisiie
+**PHPv2** est le résultat d'une année de travail de 4 étudiants en Licence Professionnelle CISIIE. Nous avons participé à la phase de conception ainsi qu'à la phase de réalisation. L'intitulé de notre sujet est : *"Environnement d'apprentissage et d'auto évaluation de la programmation"*
+Nous avons été encadré par Monsieur Amine Boumaza.
+Vous pourrez retrouver notre site de suivi sur [Webetu](https://webetu.iutnc.univ-lorraine.fr/www/torzuoli2u/wordpress/index.php/about/).
+
 ## Installation
-  Créer une base de données mysql<br>
-  Configurer le fichier .env à la racine de l'application<br>
-  Créer une clé application : php artisan key:generate<br>
-  Vider le cache de l'application : php artisan config:cache<br>
-  Lancez la migration vers la database : php artisan migrate<br>
-  Lancez un serveur Laravel : php artisan serve<br>
-  Lancez sur un navigateur : localhost:8000<br>
-  Création du dossier avatards : php artisan storage:link<br>
-  créer les dossiers public/storage/uploads/avatars<br>
-## Usage
-  PHPV2 est une plateforme d'auto-apprentissage pour le langage PHP.
-## History
-  
-## Credits
-  Victor Reeb, Pierre Becker, Hugo Torzuoli, Vivien Larrière
+
+Cloner le dépot :
+> $ git clone https://github.com/victorreeb/projet_tutore.git
+
+Créer une base de données (ex : *phpv2*)
+Copier et configurer le **env**.
+> $ cp .env.example .env
+> Remplacer les champs avec vos informations
+
+Créer une clé application :
+> $ php artisan key:generate
+
+Vider le cache de l'application :
+> $ php artisan config:cache
+
+Lancer la migration de la base de données :
+> $ php artisan migrate
+
+Créer l'alias du dossier storage :
+> $ php artisan storage:link
+
+Créer les dossiers de stockage des avatars :
+> mkdir public/storage/uploads
+> mkdir public/storage/uploads/avatars
+
+Lancer un serveur **Laravel** :
+> $ php artisan serve
+
+Ouvrir un navigateur sur ```localhost:8000```
+
+## Contributeurs
+* [**Pierre Becker**](https://github.com/PiBecker)
+* [**Vivien Larrière**](https://github.com/vivienLarriere)
+* [**Victor Reeb**](https://github.com/victorreeb)
+* [**Hugo Torzuoli**](https://github.com/torzuoliH)
+
+## Licence
+
+PHPv2 is open-sourced software licensed under the MIT license.
