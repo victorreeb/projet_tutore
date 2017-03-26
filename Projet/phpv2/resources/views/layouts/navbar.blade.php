@@ -10,22 +10,29 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
          <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
     </head>
     <body>
-        <nav>
+        <nav class="orange accent-2">
             <div class="nav-wrapper">
                 @if (Route::has('login'))
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                  <li><a href="{{ url('/') }}">Accueil</a></li>
+                  <li><a href="{{ route('exercise.index') }}">Exercises</a></li>
+                  <li><a href="{{ route('groupe.index') }}">Groupes</a></li>
+                </ul>
                 <a href="{{ url('/') }}" class="brand-logo center">PHPv2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
-                            <a href="#" class="dropdown-button btn" data-activates='dropdown1' role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
-                               <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:1px; left:5px; border-radius:50%">
+                            <a href="#" class="dropdown-button btn" data-activates='dropdown1'>
+                               <!-- <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:1px; left:5px; border-radius:50%"> -->
                                {{ Auth::user()->name }} <span class="caret"></span>
+                               <i class="large material-icons right">reorder</i>
                              </a>
-                              <ul class="dropdown-content" role="menu" id='dropdown1'>
+                              <ul class="dropdown-content" id='dropdown1'>
                                   <li><a href="{{ url('/') }}">Accueil</a></li>
                                   <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
                                   <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
