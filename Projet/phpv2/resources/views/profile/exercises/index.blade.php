@@ -22,7 +22,7 @@
             <tr>
               <td><p>{{$exercise->name}}</p></td>
               <td><p>{{$exercise->description}}</p></td>
-              <td><p><a href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a></p></td>
+              <td><p><a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a></p></td>
             </tr>
           @endforeach
         </tbody>
