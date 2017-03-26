@@ -1,26 +1,18 @@
 <?php
-
-
 /*
     Some fixes thanks to https://github.com/Intervention/image/issues/125 answers
 */
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use Image as Image;
-
-
 class UserController extends Controller
 {
     public function profile(){
       return view('auth/profile', array('user' => Auth::user()));
     }
-
     public function update_avatar(Request $request){
-
     	// Handle the user upload of avatar
     	if($request->hasFile('avatar')){
     		$avatar = $request->file('avatar');
