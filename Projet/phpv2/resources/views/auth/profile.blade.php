@@ -10,7 +10,7 @@
             <form enctype="multipart/form-data" action="{{ url('profile') }}" method="POST">
                 <label>mettre à jour</label>
                 <input type="file" name="avatar">
-                <input type="hidden" name="_token" value="{{ csrf_field() }}">
+                {{ csrf_field() }}
                 <input type="submit" class="pull-right btn btn-sm btn-primary">
             </form>
         </div>
