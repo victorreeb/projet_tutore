@@ -111,4 +111,10 @@ class UserGroupeController extends Controller
     return redirect()->route('profile.groupe.index');
   }
 
+  public function delete($id){
+    $groupe = Groupe::where('id', $id)->first();
+    $groupe->delete();
+    return redirect()->route('profile.groupe.index');
+  }
+
 }

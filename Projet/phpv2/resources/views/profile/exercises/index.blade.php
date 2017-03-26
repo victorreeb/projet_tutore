@@ -22,7 +22,10 @@
             <tr>
               <td><p>{{$exercise->name}}</p></td>
               <td><p>{{$exercise->description}}</p></td>
-              <td><p><a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a></p></td>
+              <td>
+                <a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a>
+                <a class="waves-effect red waves-light btn" href="{{ route('profile.exercise.delete', ['id' => $exercise->id]) }}">supprimer</a>
+              </td>
             </tr>
           @endforeach
         </tbody>

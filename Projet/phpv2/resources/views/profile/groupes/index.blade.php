@@ -24,6 +24,7 @@
               <td><p>{{ $groupe->count_members }}</p></td>
               <td>
                 <a class="waves-effect waves-light btn" href="{{ route('groupe.show', ['id' => $groupe->id]) }}">voir plus</a>
+                <a class="waves-effect red waves-light btn" href="{{ route('profile.groupe.delete', ['id' => $groupe->id]) }}">supprimer</a>
               </td>
             </tr>
           @endforeach
