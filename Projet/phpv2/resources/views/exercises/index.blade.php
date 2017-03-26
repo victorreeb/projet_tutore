@@ -15,9 +15,12 @@
         <tbody>
           @foreach($exercises as $exercise)
             <tr>
-              <td><p><a href="{{ route('exercise.show', ['id' => $exercise->id]) }}">{{$exercise->name}}</a></p></td>
+              <td><p>{{$exercise->name}}</p></td>
               <td><p>{{$exercise->description}}</p></td>
-              <td><p><a href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}">Résoudre</a></p></td>
+              <td>
+                <a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">{{$exercise->name}}</a>
+                <a class="waves-effect waves-light btn" href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}">Résoudre</a>
+              </td>
             </tr>
           @endforeach
         </tbody>
