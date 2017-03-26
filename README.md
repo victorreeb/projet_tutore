@@ -9,6 +9,8 @@
   Lancez la migration vers la database : php artisan migrate<br>
   Lancez un serveur Laravel : php artisan serve<br>
   Lancez sur un navigateur : localhost:8000<br>
+  Création du dossier avatards : php artisan link:storage<br>
+  créer les dossiers public/storage/uploads/avatars<br>
 ## Usage
   PHPV2 est une plateforme d'auto-apprentissage pour le langage PHP.
 ## History
