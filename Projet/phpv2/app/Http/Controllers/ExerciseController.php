@@ -24,45 +24,6 @@ class ExerciseController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('exercises/create');
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'description' => 'required|max:255',
-            'astuce' => 'required|max:255'
-        ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-      $validator = $this->validator($request->all());
-      if($validator->fails()){
-        return redirect()->back()->withErrors($validator->errors());
-      }
-      $exercise = new Exercise;
-      $exercise->name = $request->input('name');
-      $exercise->description = $request->input('description');
-      $exercise->astuce = $request->input('astuce');
-      $exercise->save();
-      return redirect()->route('test.create', ['id' => $exercise->id]);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Exercise $exercise

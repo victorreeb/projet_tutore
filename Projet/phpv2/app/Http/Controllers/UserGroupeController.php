@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\UserGroupe;
 use App\Groupe;
 use Auth;
@@ -57,4 +58,57 @@ class UserGroupeController extends Controller
       }
     }
   }
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+      $groupes = Groupe::where('id_teacher', Auth::id())->get();
+      foreach ($groupes as $groupe) {
+        $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
+        $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
+      }
+      return view('profile/groupes/index', ['groupes' => $groupes]);
+  }
+
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
+      return view('profile/groupes/create');
+  }
+
+  protected function validator(array $data)
+  {
+      return Validator::make($data, [
+          'name' => 'required|max:255'
+      ]);
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
+    $validator = $this->validator($request->all());
+    if($validator->fails()){
+      return redirect()->back()->withErrors($validator->errors());
+    }
+    $groupe = new Groupe;
+    $groupe->name = $request->input('name');
+    $groupe->id_teacher = Auth::id();
+    $groupe->name_teacher = Auth::user()->name;
+    $groupe->save();
+    return redirect()->route('profile.groupe.index');
+  }
+
 }

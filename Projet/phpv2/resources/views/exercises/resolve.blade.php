@@ -79,11 +79,7 @@
         <div class="col s2">
           <h4>Actions</h4>
           @if(isset($validated) and $validated == true)
-            <form id="code" action="{{ route('exercise.show', ['id' => $exercise->id]) }}" method="GET">
-              <input type="hidden" name="code" style="display: none;">
-              {{ csrf_field() }}
-              <button class="btn waves-effect waves-light" type="submit">Terminer</button>
-            </form>
+            <a class ="btn waves-effect waves-light" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">Terminer</a>
           @else
             <form id="code" action="{{ route('exercise.resolve', ['id' => $exercise->id]) }}" method="POST">
               <input type="hidden" name="code" style="display: none;">
