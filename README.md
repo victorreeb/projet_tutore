@@ -14,6 +14,9 @@ Copier et configurer le **.env**
 > $ cp .env.example .env
 > Remplacer les champs avec vos informations
 
+Composer install : 
+> $ composer install
+
 Créer une clé application :
 > $ php artisan key:generate
 
