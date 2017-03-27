@@ -10,7 +10,7 @@ Cloner le dépot :
 > $ git clone https://github.com/victorreeb/projet_tutore.git
 
 Créer une base de données (ex : *phpv2*)
-Copier et configurer le **env**.
+Copier et configurer le **.env**
 > $ cp .env.example .env
 > Remplacer les champs avec vos informations
 
