@@ -2,18 +2,21 @@
 @extends('layouts.navbar')
 
 @section('content')
-  <div class="row">
-    <div class="col s12">
-      <div class="card blue-grey lighten-1">
-        <div class="card-content white-text">
-          <span class="card-title">{{$exercise->name}}</span>
-          <p>{{$exercise->description}}</p>
-        </div>
-        <div class="card-action grey lighten-3">
-          <a href="{{ route('exercise.resolve', $exercise->id) }}">résoudre</a>
+    <div class="col s12 m6">
+      <div class="card horizontal">
+        <div class="card-stacked">
+          <span class="card-title center">{{$exercise->name}}</span>
+          <div class="card-content grey-text text-darken-2">
+            <h5>Description</h5>
+            <p>{{$exercise->description}}</p>
+            <h5>Astuce</h5>
+            <p>{{$exercise->astuce}}</p>
+            <h5>Auteur</h5>
+            <p>{{$exercise->name_teacher}}</p>
+          </div>
+          <div class="card-action center">
+            <p><a href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}"><i class="small material-icons">play_arrow</i>Résoudre</a></p>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
 @endsection

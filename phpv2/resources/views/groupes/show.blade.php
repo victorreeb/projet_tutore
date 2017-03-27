@@ -2,22 +2,21 @@
 @extends('layouts.navbar')
 
 @section('content')
-  <div class="row">
-    <div class="col s12">
-      <div class="card blue-grey lighten-1">
-        <div class="card-content white-text">
-          <span class="card-title">{{ $groupe->name }}</span>
-          <p>créer par <b>{{ $groupe->name_teacher }}</b></p>
-          <p>participants : {{ $groupe->count_members }}</p>
+  <div class="col s12 m6">
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <span class="card-title center">{{ $groupe->name }}</span>
+        <div class="card-content grey-text text-darken-2">
+          <p>Créer par <b>{{ $groupe->name_teacher }}</b></p>
+          <p>Participants : {{ $groupe->count_members }}</p>
         </div>
-        <div class="card-action grey lighten-3">
+        <div class="card-action center">
           @if($groupe->already_signup == 1)
-            <a class="waves-effect waves-light btn" href="{{ route('user.groupe.signout', ['id' => $groupe->id, 'redirect' => 'show']) }}">quitter</a>
+            <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id, 'redirect' => 'show']) }}}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
           @else
-            <a class="waves-effect waves-light btn" href="{{ route('user.groupe.signup', ['id' => $groupe->id, 'redirect' => 'show']) }}">rejoindre</a>
+           <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id, 'redirect' => 'show']) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
           @endif
         </div>
       </div>
     </div>
-  </div>
 @endsection

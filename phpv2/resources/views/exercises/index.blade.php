@@ -2,31 +2,30 @@
 @extends('layouts.navbar')
 
 @section('content')
-  <h4>Index exercices</h4>
+    <h2 class="header">Index Exercices</h2>
   @if(sizeof($exercises) > 0)
-  <table class="responsive-table">
-        <thead>
-          <tr>
-              <th>Nom</th>
-              <th>Description</th>
-              <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($exercises as $exercise)
-            <tr>
-              <td><p>{{$exercise->name}}</p></td>
-              <td><p>{{$exercise->description}}</p></td>
-              <td>
-                <a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a>
-                <a class="waves-effect waves-light btn" href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}">Résoudre</a>
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
+      <div class="row">
+      @foreach($exercises as $exercise)
+        <div class="col s12 m6">
+          <div class="card horizontal">
+            <div class="card-stacked">
+              <span class="card-title center">{{$exercise->name}}</span>
+              <div class="card-content grey-text text-darken-2">
+                <p>{{$exercise->description}}</p>
+              </div>
+              <div class="card-action">
+                <p><a href="{{ route('exercise.show', ['id' => $exercise->id]) }}"><i class="small material-icons">play_arrow</i>Voir plus</a></p>
+                <p><a href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}"><i class="small material-icons">play_arrow</i>Résoudre</a></p>
+                <!-- <a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a>
+                <a class="waves-effect waves-light btn" href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}">Résoudre</a> -->
+              </div>
+            </div>
+          </div>
+      </div>
+        @endforeach
+    </div>
 
   @else
-    <p>aucun exercice disponible...</p>
+    <p>Aucun exercice disponible...</p>
   @endif
 @endsection

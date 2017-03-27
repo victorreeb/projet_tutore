@@ -2,37 +2,32 @@
 @extends('layouts.navbar')
 
 @section('content')
-  <h4>Index groupes</h4>
+    <h2 class="header">Index Groupe</h2>
   @if(sizeof($groupes) > 0)
-  <table class="responsive-table">
-        <thead>
-          <tr>
-              <th>Nom</th>
-              <th>Créé par</th>
-              <th>Participants</th>
-              <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($groupes as $groupe)
-            <tr>
-              <td><p>{{ $groupe->name }}</p></td>
-              <td><p>{{ $groupe->name_teacher }}</p></td>
-              <td><p>{{ $groupe->count_members }}</p></td>
-              <td>
-                <a class="waves-effect waves-light btn" href="{{ route('groupe.show', ['id' => $groupe->id]) }}">voir plus</a>
+      <div class="row">
+        @foreach($groupes as $groupe)
+        <div class="col s12 m6">
+          <div class="card horizontal">
+            <div class="card-stacked">
+              <span class="card-title center">{{ $groupe->name }}</span>
+              <div class="card-content grey-text text-darken-2">
+                <p>Créateur : {{ $groupe->name_teacher }}</p>
+                <p>Participants : {{ $groupe->count_members }}</p>
+              </div>
+              <div class="card-action">
+                  <p><a href="{{ route('groupe.show', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Voir plus</a></p>
                 @if($groupe->already_signup == 1)
-                  <a class="waves-effect waves-light btn" href="{{ route('user.groupe.signout', ['id' => $groupe->id, 'redirect' => 'index']) }}">quitter</a>
+                  <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id, 'redirect' => 'index']) }}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
                 @else
-                  <a class="waves-effect waves-light btn" href="{{ route('user.groupe.signup', ['id' => $groupe->id, 'redirect' => 'index']) }}">rejoindre</a>
+                  <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id, 'redirect' => 'index']) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
                 @endif
-              </td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-
+              </div>
+            </div>
+          </div>
+      </div>
+        @endforeach
+    </div>
   @else
-    <p>aucun groupe disponible...</p>
+    <p>Aucun groupe disponible...</p>
   @endif
 @endsection
