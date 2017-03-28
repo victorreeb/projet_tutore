@@ -25,23 +25,23 @@
   </div>
   @if(sizeof($participants) > 0)
     <div class="row">
-    @foreach($participants as $participant)
-        <div class="col s12 m4">
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="{{ asset('storage/uploads/avatars/'. $participant->avatar) }}">
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <h4>{{ $participant->pseudo }}</h4>
+      @foreach($participants as $participant)
+          <div class="col s12 m4">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="{{ asset('storage/uploads/avatars/'. $participant->avatar) }}">
               </div>
-              <div class="card-action">
-                <a href="#">voir le profil</a>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h4>{{ $participant->pseudo }}</h4>
+                </div>
+                <div class="card-action">
+                  <a href="#">voir le profil</a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    @endforeach
+      @endforeach
     </div>
   @endif
 @endsection
