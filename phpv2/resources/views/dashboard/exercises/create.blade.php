@@ -24,6 +24,12 @@
           <input type="text" id="astuce" name="astuce" class="materialize-textarea"></input>
           <label for="astuce">Astuce</label>
         </div>
+        <div class="input-field col s12">
+          <p class="range-field">
+            Difficulté de l'exercice
+            <input type="range" id="difficulte" name="difficulte" min="1" max="5" />
+          </p>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Suivant</button>
     </form>

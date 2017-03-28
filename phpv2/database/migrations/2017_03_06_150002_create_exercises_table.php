@@ -20,6 +20,7 @@ class CreateExercisesTable extends Migration
           $table->string('name');
           $table->string('description');
           $table->string('astuce');
+          $table->integer('difficulte');
           $table->timestamps();
       });
     }

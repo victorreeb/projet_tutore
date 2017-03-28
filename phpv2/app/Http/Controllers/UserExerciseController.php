@@ -37,7 +37,8 @@ class UserExerciseController extends Controller
       return Validator::make($data, [
           'name' => 'required|max:255',
           'description' => 'required|max:255',
-          'astuce' => 'required|max:255'
+          'astuce' => 'required|max:255',
+          'difficulte' => 'required|integer|between:1,5'
       ]);
   }
 
@@ -57,6 +58,7 @@ class UserExerciseController extends Controller
     $exercise->name = $request->input('name');
     $exercise->description = $request->input('description');
     $exercise->astuce = $request->input('astuce');
+    $exercise->difficulte = $request->input('difficulte');
     $exercise->id_teacher = Auth::id();
     $exercise->name_teacher = Auth::user()->name;
     $exercise->save();
