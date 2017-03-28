@@ -12,6 +12,11 @@
               <span class="card-title center">{{$exercise->name}}</span>
               <div class="card-content grey-text text-darken-2">
                 <p>{{$exercise->description}}</p>
+                <p class="right">
+                  @for($i = 0 ; $i < $exercise->difficulte ; $i++)
+                    <i class="material-icons">star</i>
+                  @endfor
+                </p>
               </div>
               <div class="card-action">
                 <p><a href="{{ route('exercise.show', ['id' => $exercise->id]) }}"><i class="small material-icons">play_arrow</i>Voir plus</a></p>

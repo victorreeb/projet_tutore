@@ -31,6 +31,6 @@ class UserController extends Controller
     		$user->avatar = $filename;
     		$user->save();
     	}
-    	return view('auth/profile', array('user' => Auth::user()));
+    	return view('dashboard/profile/index', array('user' => Auth::user()));
     }
 }
