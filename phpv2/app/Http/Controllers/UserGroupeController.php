@@ -121,7 +121,7 @@ class UserGroupeController extends Controller
     $groupe->id_teacher = Auth::id();
     $groupe->name_teacher = Auth::user()->name;
     $groupe->save();
-    return redirect()->route('dashboard.groupe.index');
+    return redirect()->route('dashboard.groupe.index')->with('success', 'Groupe créé avec succès !');
   }
 
   public function delete($id){

@@ -25,6 +25,7 @@
 <body>
   <div class="container">
     @yield('content')
+    @include('includes.flash')
   </div>
     @yield('navbar')
     <!-- Scripts -->
