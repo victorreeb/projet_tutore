@@ -27,15 +27,15 @@
                 <a href="{{ url('/') }}" class="brand-logo center">PHPv2</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                         @if (Auth::check())
-                            <a href="#" class="dropdown-button btn" data-activates='dropdown1'>
+                            <a href="#" class="dropdown-button btn waves-effect white orange-text text-accent-2" data-activates='dropdown1'>
                                <!-- <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; position:absolute; top:1px; left:5px; border-radius:50%"> -->
                                {{ Auth::user()->name }} <span class="caret"></span>
                                <i class="large material-icons right">reorder</i>
                              </a>
                               <ul class="dropdown-content" id='dropdown1'>
-                                  <li><a href="{{ url('/') }}">Accueil</a></li>
-                                  <li><a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
-                                  <li><a href="{{ route('auth.logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
+                                  <li><a href="{{ url('/') }}" class="white orange-text">Accueil</a></li>
+                                  <li><a href="{{ route('profile') }}" class="white orange-text"><i class="fa fa-btn fa-user"></i>Profil</a></li>
+                                  <li><a href="{{ route('auth.logout') }}" class="white orange-text"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
                               </ul>
 
                         @else
