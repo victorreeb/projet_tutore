@@ -62,7 +62,7 @@ class UserExerciseController extends Controller
     $exercise->id_teacher = Auth::id();
     $exercise->name_teacher = Auth::user()->name;
     $exercise->save();
-    return redirect()->route('test.create', ['id' => $exercise->id]);
+    return redirect()->route('test.create', ['id' => $exercise->id])->with('success', 'Exercice créé avec succès !');
   }
 
   public function delete($id){

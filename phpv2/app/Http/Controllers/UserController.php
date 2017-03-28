@@ -8,7 +8,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use Auth;
 use Image as Image;
 
@@ -30,7 +29,8 @@ class UserController extends Controller
     		$user = Auth::user();
     		$user->avatar = $filename;
     		$user->save();
+        return redirect()->route('profile')->with('info', 'Avatar changé avec succès !');
     	}
-    	return view('dashboard/profile/index', array('user' => Auth::user()));
+      return view('dashboard/profile/index', array('user' => Auth::user()));
     }
 }

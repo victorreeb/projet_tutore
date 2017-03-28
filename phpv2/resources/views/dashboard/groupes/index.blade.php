@@ -23,7 +23,7 @@
               <td><p>{{ $groupe->name }}</p></td>
               <td><p>{{ $groupe->count_members }}</p></td>
               <td>
-                <a class="waves-effect waves-light btn" href="{{ route('dashboard.groupe.show', ['id' => $groupe->id]) }}">voir plus</a>
+                <a class="waves-effect waves-light btn" href="{{ route('groupe.show', ['id' => $groupe->id]) }}">voir plus</a>
                 @if(Auth::user()->type_user == 0 or Auth::user()->type_user == 1)
                   <a class="waves-effect red waves-light btn" href="{{ route('dashboard.groupe.delete', ['id' => $groupe->id]) }}">supprimer</a>
                 @endif
