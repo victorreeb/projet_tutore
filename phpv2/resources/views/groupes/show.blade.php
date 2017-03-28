@@ -19,4 +19,28 @@
         </div>
       </div>
     </div>
+  </div>
+  @if(sizeof($participants) > 0)
+    @foreach($participants as $participant)
+      <div class="row">
+        <div class="col s12 m6">
+          <h2 class="header">{{ $participant->pseudo }}</h2>
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="{{ asset('storage/uploads/avatars/'. $participant->avatar) }}" style="width:150px; height:150px;">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>utilisateur : {{ $participant->pseudo }}</p>
+                <p>{{ $participant->firstname }} {{ $participant->name }}</p>
+              </div>
+              <div class="card-action">
+                <a href="#">voir le profil</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
+  @endif
 @endsection
