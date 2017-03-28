@@ -48,3 +48,5 @@ Route::get('/dashboard/groupe/{id}', 'UserGroupeController@show')->name('dashboa
 Route::get('/dashboard/groupes/{id}/delete', 'UserGroupeController@delete')->name('dashboard.groupe.delete');
 Route::get('/dashboard/groupes/{id}/users/{user}/delete', 'UserGroupeController@delete_users')->name('dashboard.groupe.users.delete');
 Route::post('/dashboard/groupes/{id}/users/add', 'UserGroupeController@add_users')->name('dashboard.groupe.users.add');
+
+Route::post('/dashboard/groupes/{id}/exercices/add', 'exercicesGroupesController@add_users')->name('dashboard.groupe.exercices.add');

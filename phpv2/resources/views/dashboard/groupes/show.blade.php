@@ -16,7 +16,26 @@
       </div>
     </div>
   </div>
-  <h3>ajouter un participant</h3>
+
+  <h3>Ajouter un Exercice</h3>
+  <form class="form-horizontal" role="form" method="POST" action="{{ route('dashboard.groupe.exercice.add', ['id' => $groupe->id]) }}">
+    {{ csrf_field() }}
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" id="name" name="name" class="materialize-textarea"></input>
+        <label for="name">Nom</label>
+        @if ($errors->has('name'))
+            <span class="help-block">
+                <strong>{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+
+
+  <h3>Ajouter un participant</h3>
   <form class="form-horizontal" role="form" method="POST" action="{{ route('dashboard.groupe.users.add', ['id' => $groupe->id]) }}">
     {{ csrf_field() }}
     <div class="row">
