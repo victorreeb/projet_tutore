@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index');
 
 /* Route for Auth */
 Auth::routes();
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('auth.logout');
 
 /* Route for Exercise */
 Route::get('/exercises/{id}/resolve','ExerciseController@begin')->name('exercise.resolve');
@@ -33,15 +33,16 @@ Route::get('/groupes/{id}/signup', 'UserGroupeController@signup')->name('user.gr
 Route::get('/groupes/{id}/signout', 'UserGroupeController@signout')->name('user.groupe.signout');
 
 /* Route for User Profile */
-Route::get('/profile', 'UserController@profile')->name('profile');
-Route::post('/profile', 'UserController@update_avatar');
-Route::get('/profile/exercises/create', 'UserExerciseController@create')->name('exercise.create');
-Route::post('/profile/exercises/create','UserExerciseController@store');
-Route::get('/profile/exercises', 'UserExerciseController@index')->name('profile.exercise.index');
-Route::get('/profile/exercises/{id}/delete', 'UserExerciseController@delete')->name('profile.exercise.delete');
-Route::get('/profile/exercises/{id}/tests', 'TestController@create')->name('test.create');
-Route::post('/profile/exercises/{id}/tests','TestController@store');
-Route::get('/profile/groupes/create', 'UserGroupeController@create')->name('groupe.create');
-Route::post('/profile/groupes/create','UserGroupeController@store');
-Route::get('/profile/groupes', 'UserGroupeController@index')->name('profile.groupe.index');
-Route::get('/profile/groupes/{id}/delete', 'UserGroupeController@delete')->name('profile.groupe.delete');
+Route::get('/dashboard/profile', 'UserController@profile')->name('profile');
+Route::post('/dashboard/profile', 'UserController@update_avatar');
+Route::get('/dashboard/exercises/create', 'UserExerciseController@create')->name('exercise.create');
+Route::post('/dashboard/exercises/create','UserExerciseController@store');
+Route::get('/dashboard/exercises', 'UserExerciseController@index')->name('dashboard.exercise.index');
+Route::get('/dashboard/exercises/{id}/delete', 'UserExerciseController@delete')->name('dashboard.exercise.delete');
+Route::get('/dashboard/exercises/{id}/tests', 'TestController@create')->name('test.create');
+Route::post('/dashboard/exercises/{id}/tests','TestController@store');
+Route::get('/dashboard/groupes/create', 'UserGroupeController@create')->name('groupe.create');
+Route::post('/dashboard/groupes/create','UserGroupeController@store');
+Route::get('/dashboard/groupes', 'UserGroupeController@index')->name('dashboard.groupe.index');
+Route::get('/dashboard/groupe/{id}', 'UserGroupeController@show')->name('dashboard.groupe.show');
+Route::get('/dashboard/groupes/{id}/delete', 'UserGroupeController@delete')->name('dashboard.groupe.delete');

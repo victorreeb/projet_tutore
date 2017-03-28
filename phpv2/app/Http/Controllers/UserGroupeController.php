@@ -11,8 +11,7 @@ use Auth;
 
 class UserGroupeController extends Controller
 {
-  public function signup($id, Request $request){
-    $redirect = request()->redirect;
+  public function signup($id){
     $groupe = Groupe::where('id', $id)->first();
     $check_already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
     if($check_already_signup == 0){
@@ -20,43 +19,33 @@ class UserGroupeController extends Controller
       $user_groupe->id_group = $groupe->id;
       $user_groupe->id_user = Auth::id();
       $user_groupe->save();
-      if($redirect == 'show'){
-        return redirect()->route('groupe.show', ['id' => $groupe->id]);
-      }
-      else{
-        return redirect()->route('groupe.index');
-      }
     }
-    else{
-      if($redirect == 'show'){
-        return redirect()->route('groupe.show', ['id' => $groupe->id]);
-      }
-      else{
-        return redirect()->route('groupe.index');
-      }
-    }
+    return redirect()->back();
   }
 
-  public function signout($id, Request $request){
-    $redirect = request()->redirect;
+  public function signout($id){
     $groupe = Groupe::where('id', $id)->first();
     $user_groupe = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->first();
-    if($user_groupe != null){
+    if(!empty($user_groupe)){
       $user_groupe->delete();
-      if($redirect == 'show'){
-        return redirect()->route('groupe.show', ['id' => $groupe->id]);
-      }
-      else{
-        return redirect()->route('groupe.index');
-      }
+    }
+    return redirect()->back();
+  }
+
+  /**
+   * Display the specified resource.
+   *
+   * @param  \App\Exercise $exercise
+   * @return \Illuminate\Http\Response
+   */
+  public function show($id)
+  {
+    $exercise = Exercise::where('id', $id)->first();
+    if($exercise->id_teacher == Auth::id()){
+      return view('dashboard/exercises/show', ['exercise' => $exercise]);
     }
     else{
-      if($redirect == 'show'){
-        return redirect()->route('groupe.show', ['id' => $groupe->id]);
-      }
-      else{
-        return redirect()->route('groupe.index');
-      }
+      return redirect()->back();
     }
   }
 
@@ -73,7 +62,7 @@ class UserGroupeController extends Controller
           $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
           $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
         }
-        return view('profile/groupes/index', ['groupes' => $groupes]);
+        return view('dashboard/groupes/index', ['groupes' => $groupes]);
       }
       elseif (Auth::user()->type_user == 2) {
           $user_groupes = UserGroupe::where('id_user', Auth::id())->get();
@@ -83,7 +72,7 @@ class UserGroupeController extends Controller
               $groupes->push(Groupe::where('id', $user_groupe->id_group)->first());
             }
           }
-          return view('profile/groupes/index', ['groupes' => $groupes]);
+          return view('dashboard/groupes/index', ['groupes' => $groupes]);
       }
   }
 
@@ -94,7 +83,7 @@ class UserGroupeController extends Controller
    */
   public function create()
   {
-      return view('profile/groupes/create');
+      return view('dashboard/groupes/create');
   }
 
   protected function validator(array $data)
@@ -121,13 +110,13 @@ class UserGroupeController extends Controller
     $groupe->id_teacher = Auth::id();
     $groupe->name_teacher = Auth::user()->name;
     $groupe->save();
-    return redirect()->route('profile.groupe.index');
+    return redirect()->route('dashboard.groupe.index');
   }
 
   public function delete($id){
     $groupe = Groupe::where('id', $id)->first();
     $groupe->delete();
-    return redirect()->route('profile.groupe.index');
+    return redirect()->route('dashboard.groupe.index');
   }
 
 }

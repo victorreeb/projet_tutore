@@ -12,9 +12,9 @@
         </div>
         <div class="card-action center">
           @if($groupe->already_signup == 1)
-            <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
+            <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id]) }}}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
           @else
-            <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
+           <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
           @endif
         </div>
       </div>

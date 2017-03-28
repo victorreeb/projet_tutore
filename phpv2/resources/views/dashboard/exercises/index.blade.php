@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
   <div class="col s3">
-    @include('profile.partials.sidebar')
+    @include('dashboard.partials.sidebar')
   </div>
   <div class="col s6">
   <h4>Index exercices</h4>
@@ -24,7 +24,7 @@
               <td><p>{{$exercise->description}}</p></td>
               <td>
                 <a class="waves-effect waves-light btn" href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a>
-                <a class="waves-effect red waves-light btn" href="{{ route('profile.exercise.delete', ['id' => $exercise->id]) }}">supprimer</a>
+                <a class="waves-effect red waves-light btn" href="{{ route('dashboard.exercise.delete', ['id' => $exercise->id]) }}">supprimer</a>
               </td>
             </tr>
           @endforeach

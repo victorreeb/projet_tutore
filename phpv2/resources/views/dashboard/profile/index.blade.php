@@ -3,7 +3,7 @@
 @section('content')
   <div class="row">
     <div class="col s3">
-      @include('profile.partials.sidebar')
+      @include('dashboard.partials.sidebar')
     </div>
     <div class="col s6">
       <div class="row">
@@ -18,7 +18,7 @@
                     <button class="btn btn-sm btn-primary">Changer mon mot de passe</button>
 
                     <h4>Avatar</h4>
-                    <form enctype="multipart/form-data" action="{{ url('profile') }}" method="POST">
+                    <form enctype="multipart/form-data" action="{{ route('profile') }}" method="POST">
                         <label>Changer d'avatar</label>
                         <input type="file" name="avatar">
                         {{ csrf_field() }}

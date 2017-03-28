@@ -17,9 +17,9 @@
               <div class="card-action">
                   <p><a href="{{ route('groupe.show', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Voir plus</a></p>
                 @if($groupe->already_signup == 1)
-                  <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id, 'redirect' => 'index']) }}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
+                  <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
                 @else
-                  <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id, 'redirect' => 'index']) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
+                  <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
                 @endif
               </div>
             </div>

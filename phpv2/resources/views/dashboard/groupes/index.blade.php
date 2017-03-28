@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
   <div class="col s3">
-    @include('profile.partials.sidebar')
+    @include('dashboard.partials.sidebar')
   </div>
   <div class="col s6">
   <h4>Index groupes</h4>
@@ -25,7 +25,7 @@
               <td>
                 <a class="waves-effect waves-light btn" href="{{ route('groupe.show', ['id' => $groupe->id]) }}">voir plus</a>
                 @if(Auth::user()->type_user == 0 or Auth::user()->type_user == 1)
-                  <a class="waves-effect red waves-light btn" href="{{ route('profile.groupe.delete', ['id' => $groupe->id]) }}">supprimer</a>
+                  <a class="waves-effect red waves-light btn" href="{{ route('dashboard.groupe.delete', ['id' => $groupe->id]) }}">supprimer</a>
                 @endif
               </td>
             </tr>

@@ -34,13 +34,13 @@
                              </a>
                               <ul class="dropdown-content" id='dropdown1'>
                                   <li><a href="{{ url('/') }}">Accueil</a></li>
-                                  <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
-                                  <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
+                                  <li><a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
+                                  <li><a href="{{ route('auth.logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a></li>
                               </ul>
 
                         @else
-                            <li><a href="{{ url('/login') }}">Connexion</a></li>
-                            <li><a href="{{ url('/register') }}">Inscription</a></li>
+                            <li><a href="{{ route('login') }}">Connexion</a></li>
+                            <li><a href="{{ route('register') }}">Inscription</a></li>
                         @endif
                 </ul>
                 @endif
