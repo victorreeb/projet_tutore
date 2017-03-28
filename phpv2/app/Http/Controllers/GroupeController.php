@@ -36,6 +36,7 @@ class GroupeController extends Controller
   public function show($id)
   {
     $groupe = Groupe::where('id', $id)->first();
+    $user = User::where('id', $groupe->id_teacher)->first();
     $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
     $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
     $users_groupe = UserGroupe::where('id_group', $groupe->id)->get();
@@ -45,7 +46,7 @@ class GroupeController extends Controller
         $users->push(User::where('id', $user_groupe->id_user)->first());
       }
     }
-    return view('groupes/show', ['groupe' => $groupe, 'participants' => $users]);
+    return view('groupes/show', ['groupe' => $groupe, 'participants' => $users, 'user' => $user]);
   }
 
   /**

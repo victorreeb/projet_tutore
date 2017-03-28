@@ -4,6 +4,9 @@
 @section('content')
   <div class="col s12 m6">
     <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{ asset('storage/uploads/avatars/'. $user->avatar) }}">
+      </div>
       <div class="card-stacked">
         <span class="card-title center">{{ $groupe->name }}</span>
         <div class="card-content grey-text text-darken-2">
@@ -21,18 +24,16 @@
     </div>
   </div>
   @if(sizeof($participants) > 0)
+    <div class="row">
     @foreach($participants as $participant)
-      <div class="row">
         <div class="col s12 m4">
-          <h2 class="header">{{ $participant->pseudo }}</h2>
           <div class="card horizontal">
             <div class="card-image">
-              <img src="{{ asset('storage/uploads/avatars/'. $participant->avatar) }}" style="width:150px; height:150px;">
+              <img src="{{ asset('storage/uploads/avatars/'. $participant->avatar) }}">
             </div>
             <div class="card-stacked">
               <div class="card-content">
-                <p>utilisateur : {{ $participant->pseudo }}</p>
-                <p>{{ $participant->firstname }} {{ $participant->name }}</p>
+                <h4>{{ $participant->pseudo }}</h4>
               </div>
               <div class="card-action">
                 <a href="#">voir le profil</a>
@@ -40,7 +41,7 @@
             </div>
           </div>
         </div>
-      </div>
     @endforeach
+    </div>
   @endif
 @endsection
