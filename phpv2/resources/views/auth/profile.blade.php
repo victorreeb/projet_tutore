@@ -15,8 +15,7 @@
                     <h5>Pseudo</h5>
                     <input id="pseudo" type="text" class="form-control" name="pseudo" value="{{ Auth::user()->pseudo }}" required autofocus>
 
-                    <h5>Changer de mot de passe</h5>
-                    <button class="btn btn-sm btn-primary">Changer</button>
+                    <button class="btn btn-sm btn-primary">Changer mon mot de passe</button>
 
                     <h4>Avatar</h4>
                     <form enctype="multipart/form-data" action="{{ url('profile') }}" method="POST">

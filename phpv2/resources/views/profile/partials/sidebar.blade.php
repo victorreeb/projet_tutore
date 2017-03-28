@@ -30,12 +30,12 @@
         <a href="{{ route('exercise.create') }}">ajouter</a>
       </p>
     </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">folder</i>
+      <span class="title">Mes exercices</span>
+      <p>
+        <a href="{{ route('profile.exercise.index') }}">gérer</a>
+      </p>
+    </li>
   @endif
-  <li class="collection-item avatar">
-    <i class="material-icons circle green">folder</i>
-    <span class="title">Mes exercices</span>
-    <p>
-      <a href="{{ route('profile.exercise.index') }}">gérer</a>
-    </p>
-  </li>
 </ul>

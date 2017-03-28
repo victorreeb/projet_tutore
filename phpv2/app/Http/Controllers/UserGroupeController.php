@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\Collection;
 use App\UserGroupe;
 use App\Groupe;
 use Auth;
@@ -66,12 +67,24 @@ class UserGroupeController extends Controller
    */
   public function index()
   {
-      $groupes = Groupe::where('id_teacher', Auth::id())->get();
-      foreach ($groupes as $groupe) {
-        $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
-        $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
+      if(Auth::user()->type_user == 1 or Auth::user()->type_user == 0){
+        $groupes = Groupe::where('id_teacher', Auth::id())->get();
+        foreach ($groupes as $groupe) {
+          $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
+          $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
+        }
+        return view('profile/groupes/index', ['groupes' => $groupes]);
       }
-      return view('profile/groupes/index', ['groupes' => $groupes]);
+      elseif (Auth::user()->type_user == 2) {
+          $user_groupes = UserGroupe::where('id_user', Auth::id())->get();
+          $groupes = new Collection;
+          if(!empty($user_groupes)){
+            foreach ($user_groupes as $user_groupe) {
+              $groupes->push(Groupe::where('id', $user_groupe->id_group)->first());
+            }
+          }
+          return view('profile/groupes/index', ['groupes' => $groupes]);
+      }
   }
 
   /**
