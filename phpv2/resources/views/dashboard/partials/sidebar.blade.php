@@ -19,7 +19,7 @@
     <i class="material-icons circle blue">folder</i>
     <span class="title">Mes groupes</span>
     <p>
-      <a href="{{ route('profile.groupe.index') }}">gérer</a>
+      <a href="{{ route('dashboard.groupe.index') }}">gérer</a>
     </p>
   </li>
   @if(Auth::user()->type_user == 1 or Auth::user()->type_user == 0)
@@ -30,12 +30,12 @@
         <a href="{{ route('exercise.create') }}">ajouter</a>
       </p>
     </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">folder</i>
+      <span class="title">Mes exercices</span>
+      <p>
+        <a href="{{ route('dashboard.exercise.index') }}">gérer</a>
+      </p>
+    </li>
   @endif
-  <li class="collection-item avatar">
-    <i class="material-icons circle green">folder</i>
-    <span class="title">Mes exercices</span>
-    <p>
-      <a href="{{ route('profile.exercise.index') }}">gérer</a>
-    </p>
-  </li>
 </ul>

@@ -19,7 +19,7 @@ class UserExerciseController extends Controller
   public function index()
   {
       $exercises = Exercise::where('id_teacher', Auth::id())->get();
-      return view('profile/exercises/index', ['exercises' => $exercises]);
+      return view('dashboard/exercises/index', ['exercises' => $exercises]);
   }
 
   /**
@@ -29,7 +29,7 @@ class UserExerciseController extends Controller
    */
   public function create()
   {
-      return view('profile/exercises/create');
+      return view('dashboard/exercises/create');
   }
 
   protected function validator(array $data)
@@ -70,6 +70,6 @@ class UserExerciseController extends Controller
       $test->delete();
     }
     $exercise->delete();
-    return redirect()->route('profile.exercise.index');
+    return redirect()->route('dashboard.exercise.index');
   }
 }

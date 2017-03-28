@@ -3,7 +3,7 @@
 @section('content')
   <div class="row">
     <div class="col s3">
-      @include('profile.partials.sidebar')
+      @include('dashboard.partials.sidebar')
     </div>
     <div class="col s6">
       <div class="row">
@@ -15,11 +15,10 @@
                     <h5>Pseudo</h5>
                     <input id="pseudo" type="text" class="form-control" name="pseudo" value="{{ Auth::user()->pseudo }}" required autofocus>
 
-                    <h5>Changer de mot de passe</h5>
-                    <button class="btn btn-sm btn-primary">Changer</button>
+                    <button class="btn btn-sm btn-primary">Changer mon mot de passe</button>
 
                     <h4>Avatar</h4>
-                    <form enctype="multipart/form-data" action="{{ url('profile') }}" method="POST">
+                    <form enctype="multipart/form-data" action="{{ route('profile') }}" method="POST">
                         <label>Changer d'avatar</label>
                         <input type="file" name="avatar">
                         {{ csrf_field() }}

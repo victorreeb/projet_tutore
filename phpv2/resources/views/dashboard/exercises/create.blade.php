@@ -4,7 +4,7 @@
 @section('content')
 <div class="row">
   <div class="col s3">
-    @include('profile.partials.sidebar')
+    @include('dashboard.partials.sidebar')
   </div>
   <div class="col s6">
     <h3>Création Exercice</h3><hr>
