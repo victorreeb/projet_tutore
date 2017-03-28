@@ -16,14 +16,14 @@
       @endif
     </div>
     <div class="carousel-item white-text" href="#one!">
-      <img src="{{ asset('storage/img/carrousel/php-1.jpg') }}">
+      <img src="{{ asset('storage/img/carrousel/img1.jpg') }}">
       <!-- <img src="{{ asset('storage/nom_image.jpg') }}"> -->
     </div>
     <div class="carousel-item white-text" href="#two!">
-      <img src="{{ asset('storage/img/carrousel/home/php-2.jpg') }}">
+      <img src="{{ asset('storage/img/carrousel/img2.jpg') }}">
     </div>
     <div class="carousel-item white-text" href="#three!">
-      <img src="{{ asset('storage/img/carrousel/home/php-3.jpg') }}">
+      <img src="{{ asset('storage/img/carrousel/img3.jpg') }}">
     </div>
 </div>
 <div class="row">
