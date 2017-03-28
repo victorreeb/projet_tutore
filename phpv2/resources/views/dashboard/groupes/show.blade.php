@@ -11,12 +11,52 @@
           <p>Participants : {{ $groupe->count_members }}</p>
         </div>
         <div class="card-action center">
-          @if($groupe->already_signup == 1)
-            <p><a href="{{ route('user.groupe.signout', ['id' => $groupe->id]) }}}"><i class="small material-icons">play_arrow</i>Quitter</a></p>
-          @else
-           <p><a href="{{ route('user.groupe.signup', ['id' => $groupe->id]) }}"><i class="small material-icons">play_arrow</i>Rejoindre</a></p>
-          @endif
+          editer ?
         </div>
       </div>
     </div>
+  </div>
+  <h3>ajouter un participant</h3>
+  <form class="form-horizontal" role="form" method="POST" action="{{ route('dashboard.groupe.users.add', ['id' => $groupe->id]) }}">
+    {{ csrf_field() }}
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" id="name" name="name" class="materialize-textarea"></input>
+        <label for="name">Nom</label>
+        @if ($errors->has('name'))
+            <span class="help-block">
+                <strong>{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+  </form>
+  @if(sizeof($participants) > 0)
+    <h3>liste des participants inscrits</h3>
+    <table class="responsive-table">
+        <thead>
+          <tr>
+              <th>Pseudo</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($participants as $participant)
+            <tr>
+              <td><p>{{ $participant->pseudo }}</p></td>
+              <td><p>{{ $participant->name }}</p></td>
+              <td><p>{{ $participant->firstname }}</p></td>
+              <td><p>{{ $participant->email }}</p></td>
+              <td>
+                <a class="waves-effect red waves-light btn" href="{{ route('dashboard.groupe.users.delete', ['id' => $groupe->id, 'user' => $participant->pseudo]) }}">Supprimer</a>
+              </td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    @endif
 @endsection

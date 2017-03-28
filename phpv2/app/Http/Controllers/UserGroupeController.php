@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use App\UserGroupe;
 use App\Groupe;
+use App\Exercise;
+use App\User;
 use Auth;
 
 class UserGroupeController extends Controller
@@ -40,9 +42,18 @@ class UserGroupeController extends Controller
    */
   public function show($id)
   {
-    $exercise = Exercise::where('id', $id)->first();
-    if($exercise->id_teacher == Auth::id()){
-      return view('dashboard/exercises/show', ['exercise' => $exercise]);
+    $groupe = Groupe::where('id', $id)->first();
+    if($groupe->id_teacher == Auth::id()){
+      $users_groupe = UserGroupe::where('id_group', $groupe->id)->get();
+      $users = new Collection;
+      if(!empty($users_groupe)){
+        foreach ($users_groupe as $user_groupe) {
+          $users->push(User::where('id', $user_groupe->id_user)->first());
+        }
+      }
+      $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
+      $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
+      return view('dashboard/groupes/show', ['groupe' => $groupe, 'participants' => $users]);
     }
     else{
       return redirect()->back();
@@ -117,6 +128,38 @@ class UserGroupeController extends Controller
     $groupe = Groupe::where('id', $id)->first();
     $groupe->delete();
     return redirect()->route('dashboard.groupe.index');
+  }
+
+  public function add_users($id, Request $request){
+    $validator = $this->validator($request->all());
+    if($validator->fails()){
+      return redirect()->back()->withErrors($validator->errors());
+    }
+    $groupe = Groupe::where('id', $id)->first();
+    $user = User::where('pseudo', $request->input('name'))->first();
+    if($user){
+      $user_already_added = UserGroupe::where('id_group', $groupe->id)->where('id_user', $user->id)->first();
+      if($user_already_added){
+        $validator->errors()->add('name', 'Utilisateur déjà ajouté');
+        return redirect()->back()->withErrors($validator->errors());
+      }
+      $user_groupe = new UserGroupe;
+      $user_groupe->id_group = $groupe->id;
+      $user_groupe->id_user = $user->id;
+      $user_groupe->save();
+      return redirect()->route('dashboard.groupe.show', ['id' => $id]);
+    }
+    else{
+      $validator->errors()->add('name', 'Utilisateur introuvable');
+      return redirect()->back()->withErrors($validator->errors());
+    }
+  }
+
+  public function delete_users($id, $user){
+    $user = User::where('pseudo', $user)->first();
+    $user_groupe = UserGroupe::where('id_group', $id)->where('id_user', $user->id)->first();
+    $user_groupe->delete();
+    return redirect()->back();
   }
 
 }
