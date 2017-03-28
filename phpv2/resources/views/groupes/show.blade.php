@@ -23,7 +23,7 @@
   @if(sizeof($participants) > 0)
     @foreach($participants as $participant)
       <div class="row">
-        <div class="col s12 m6">
+        <div class="col s12 m4">
           <h2 class="header">{{ $participant->pseudo }}</h2>
           <div class="card horizontal">
             <div class="card-image">
