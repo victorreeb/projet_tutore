@@ -77,10 +77,13 @@ class UserGroupeController extends Controller
       }
       elseif (Auth::user()->type_user == 2) {
           $user_groupes = UserGroupe::where('id_user', Auth::id())->get();
-          $groupes = new Collection;
-          if(!empty($user_groupes)){
+          if($user_groupes){
+            $groupes = new Collection;
             foreach ($user_groupes as $user_groupe) {
-              $groupes->push(Groupe::where('id', $user_groupe->id_group)->first());
+              $groupe = Groupe::where('id', $user_groupe->id_group)->first();
+              if($groupe){
+                $groupes->push($groupe);
+              }
             }
           }
           return view('dashboard/groupes/index', ['groupes' => $groupes]);
@@ -119,7 +122,7 @@ class UserGroupeController extends Controller
     $groupe = new Groupe;
     $groupe->name = $request->input('name');
     $groupe->id_teacher = Auth::id();
-    $groupe->name_teacher = Auth::user()->name;
+    $groupe->name_teacher = Auth::user()->pseudo;
     $groupe->save();
     return redirect()->route('dashboard.groupe.index')->with('success', 'Groupe créé avec succès !');
   }
