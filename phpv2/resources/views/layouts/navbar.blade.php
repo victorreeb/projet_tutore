@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>PHPV2</title>
+    <title>Laravel</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -19,7 +20,6 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-
 </head>
 <body>
 <nav class="orange accent-2">

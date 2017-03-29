@@ -18,7 +18,6 @@
                         </p>
                     </div>
 
-
             <div class="col s12 m4 l8">
                 <br>
                 <style type="text/css" media="screen">
@@ -34,6 +33,7 @@
 
 
             <div class="col s12 m4 l2">
+
                         @if(!empty($tests))
                             @if(sizeof($tests) > 0)
                                 <table class="centered bordered">
@@ -83,8 +83,6 @@
                                     </p>
                                 @endif
                             @endif
-
-
 
             </div>
         </div>
