@@ -35,22 +35,22 @@
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 @if (Auth::check())
-                    <a href="#" class="dropdown-button btn" style="background-color: transparent"
+                    <a href="#" class="dropdown-button btn waves-effect white orange-text text-accent-2" style="background-color: transparent"
                        data-activates='dropdown1'>
-                        <img class="responsive-img circle" style="width: auto;height: 100%;"
-                             src="{{URL::asset('storage/uploads/avatars')}}/{{ Auth::user()->avatar }}">
+                         {{ Auth::user()->name }}
+                         <span class="caret"></span>
                         <i class="large material-icons right">reorder</i>
                     </a>
                     <ul class="dropdown-content" id='dropdown1'>
-                        <li><a href="{{ url('/') }}">Accueil</a></li>
-                        <li><a href="{{ route('profile') }}"><i class="fa fa-btn fa-user"></i>Profil</a></li>
-                        <li><a href="{{ route('auth.logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a>
+                        <li><a href="{{ url('/') }}" class="white orange-text">Accueil</a></li>
+                        <li><a href="{{ route('profile') }}" class="white orange-text"><i class="fa fa-btn fa-user"></i>Profil</a></li>
+                        <li><a href="{{ route('auth.logout') }}" class="white orange-text"><i class="fa fa-btn fa-sign-out"></i>Déconnexion</a>
                         </li>
                     </ul>
 
                         @else
-                            <li><a href="{{ route('login') }}">Connexion</a></li>
-                            <li><a href="{{ route('register') }}">Inscription</a></li>
+                            <li><a href="{{ route('login') }}" class="white orange-text">Connexion</a></li>
+                            <li><a href="{{ route('register') }}" class="white orange-text">Inscription</a></li>
                         @endif
                 </ul>
                 @endif
