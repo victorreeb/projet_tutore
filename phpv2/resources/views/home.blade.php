@@ -26,8 +26,10 @@
             <img src="{{ asset('storage/img/carrousel/img3.jpg') }}">
         </div>
     </div>
+
     <div class="row">
-        <div class="col s6">
+      @if( Auth::user()->type_user == 2 )
+        <div class="col s12">
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title grey-text text-darken-4">Vous êtes étudiant ?</span>
@@ -40,7 +42,7 @@
                     </p>
                 </div>
                 @if(Auth::check())
-                    <div class="card-action">
+                    <div class="card-action center">
                         <p><a href="{{ route('exercise.index') }}"><i class="small material-icons">play_arrow</i>accéder
                                 aux
                                 exercices</a></p>
@@ -51,7 +53,9 @@
                 @endif
             </div>
         </div>
-        <div class="col s6">
+        @endif
+        @if( Auth::user()->type_user == 1 )
+        <div class="col s12">
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title grey-text text-darken-4">Vous êtes enseignant ?</span>
@@ -64,7 +68,7 @@
                     </p>
                 </div>
                 @if(Auth::check())
-                    <div class="card-action">
+                    <div class="card-action center">
                         <p><a href="{{ route('exercise.create') }}"><i class="small material-icons">play_arrow</i>ajouter
                                 un exercice</a></p>
                         <p><a href="{{ route('groupe.create') }}"><i class="small material-icons">play_arrow</i>créer un
@@ -73,6 +77,7 @@
                     </div>
             </div>
         </div>
+        @endif
     </div>
     </div>
 

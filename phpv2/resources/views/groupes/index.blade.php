@@ -25,10 +25,12 @@
                                                     class="small material-icons">play_arrow</i>Rejoindre</a></p>
                                 @endif
 
-                                <p><a href="{{ route('groupe.exercise.index', ['id' => $groupe->id]) }}"><i
-                                                class="small material-icons">play_arrow</i>Ajouter un exercice à ce
-                                        groupe</a>
-                                </p>
+                                @if( Auth::user()->type_user == 1 )
+                                  <p><a href="{{ route('groupe.exercise.index', ['id' => $groupe->id]) }}"><i
+                                                  class="small material-icons">play_arrow</i>Ajouter un exercice à ce
+                                          groupe</a>
+                                  </p>
+                                @endif
                             </div>
                         </div>
                     </div>
