@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>PHPV2</title>
-    <title>Laravel</title>
+        <title>Laravel</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -49,14 +48,13 @@
                         </li>
                     </ul>
 
-                @else
-                    <li><a href="{{ route('login') }}">Connexion</a></li>
-                    <li><a href="{{ route('register') }}">Inscription</a></li>
+                        @else
+                            <li><a href="{{ route('login') }}">Connexion</a></li>
+                            <li><a href="{{ route('register') }}">Inscription</a></li>
+                        @endif
+                </ul>
                 @endif
-            </ul>
-        @endif
-    </div>
-</nav>
-
-</body>
+            </div>
+        </nav>
+    </body>
 </html>
