@@ -27,14 +27,17 @@
         @if (Route::has('login'))
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="{{ url('/') }}">Accueil</a></li>
-                <li><a href="{{ route('exercise.index') }}">Exercices</a></li>
-                <li><a href="{{ route('groupe.index') }}">Groupes</a></li>
+                @if(Auth::check())
+                    <li><a href="{{ route('exercise.index') }}">Exercices</a></li>
+                    <li><a href="{{ route('groupe.index') }}">Groupes</a></li>
+                @endif
             </ul>
             <a href="{{ url('/') }}" class="brand-logo center">PHPv2</a>
 
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 @if (Auth::check())
-                    <a href="#" class="dropdown-button btn" style="background-color: transparent" data-activates='dropdown1'>
+                    <a href="#" class="dropdown-button btn" style="background-color: transparent"
+                       data-activates='dropdown1'>
                         <img class="responsive-img circle" style="width: auto;height: 100%;"
                              src="{{URL::asset('storage/uploads/avatars')}}/{{ Auth::user()->avatar }}">
                         <i class="large material-icons right">reorder</i>

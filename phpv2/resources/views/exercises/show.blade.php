@@ -3,26 +3,27 @@
 
 @section('content')
     <div class="col s12 m6">
-      <div class="card horizontal">
-        <div class="card-stacked">
-          <span class="card-title center">{{ $exercise->name }}</span>
-          <div class="card-content grey-text text-darken-2">
-            <h5>Description</h5>
-            <p>{{$exercise->description}}</p>
-            <h5>Astuce</h5>
-            <p>{{$exercise->astuce}}</p>
-            <h5>Auteur</h5>
-            <p>{{$exercise->name_teacher}}</p>
-            <p class="right">
-              @for($i = 0 ; $i < $exercise->difficulte ; $i++)
-                <i class="material-icons">star</i>
-              @endfor
-            </p>
-          </div>
-          <div class="card-action center">
-            <p><a href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}"><i class="small material-icons">play_arrow</i>Résoudre</a></p>
-          </div>
+        <div class="card horizontal">
+            <div class="card-stacked">
+                <span class="card-title center">{{ $exercise->name }}</span>
+                <div class="card-content grey-text text-darken-2">
+                    <h5>Description</h5>
+                    <p>{{$exercise->description}}</p>
+                    <h5>Astuce</h5>
+                    <p>{{$exercise->astuce}}</p>
+                    <h5>Auteur</h5>
+                    <p>{{$exercise->name_teacher}}</p>
+                    <p class="right">
+                        @for($i = 0 ; $i < $exercise->difficulte ; $i++)
+                            <i class="material-icons">star</i>
+                        @endfor
+                    </p>
+                </div>
+                <div class="card-action center">
+                    <p><a href="{{ route('exercise.resolve', ['id' => $exercise->id]) }}"><i
+                                    class="small material-icons">play_arrow</i>Résoudre</a></p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 @endsection
