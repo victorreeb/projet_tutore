@@ -34,6 +34,7 @@ Créer les dossiers de stockage des avatars :
 > mkdir public/storage/uploads/avatars
 
 choix 1 : Lancer votre application **Laravel** depuis un serveur apache :
+>
 choix 2 : Lancer un serveur homestead **Laravel** :
 > $ php artisan serve
 
