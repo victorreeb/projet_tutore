@@ -17,23 +17,21 @@ Route::get('/', 'HomeController@index');
 /* Route for Auth */
 Auth::routes();
 
-/* Route for Exercise */
-Route::get('/exercises', 'ExerciseController@index')->name('exercise.index');
-Route::get('/exercises/{id}', 'ExerciseController@show')->name('exercise.show');
-
-/* Route for Groupe */
-Route::get('/groupes', 'GroupeController@index')->name('groupe.index');
-Route::get('/groupes/{id}', 'GroupeController@show')->name('groupe.show');
-Route::get('/groupes/{id}/exercises', 'exercicesGroupesController@index')->name('groupe.exercise.index');
-
 Route::group(['middleware' => ['auth']], function () {
   /* Route for Auth */
   Route::get('/logout', 'Auth\LoginController@logout')->name('auth.logout');
 
+  /* Route for Groupe */
+  Route::get('/groupes', 'GroupeController@index')->name('groupe.index');
+  Route::get('/groupes/{id}', 'GroupeController@show')->name('groupe.show');
+  Route::get('/groupes/{id}/exercises', 'exercicesGroupesController@index')->name('groupe.exercise.index');
+
   /* Route for Exercise */
+  Route::get('/exercises', 'ExerciseController@index')->name('exercise.index');
+  Route::get('/exercises/{id}', 'ExerciseController@show')->name('exercise.show');
   Route::get('/exercises/{id}/resolve', 'ExerciseController@begin')->name('exercise.resolve');
   Route::post('/exercises/{id}/resolve', 'ExerciseController@resolve');
-  
+
   /* Route for UserGroup */
   Route::get('/groupes/{id}/signup', 'UserGroupeController@signup')->name('user.groupe.signup');
   Route::get('/groupes/{id}/signout', 'UserGroupeController@signout')->name('user.groupe.signout');
