@@ -24,7 +24,7 @@
                                           <strong>{{ $errors->first('exercice') }}</strong>
                                       </span>
                                   @endif
-                                  <br
+                                  <br>
                                   <button type="submit" class="btn waves-effect white orange-text text-accent-2">
                                       Valider
                                   </button>
@@ -37,5 +37,5 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 @endsection
