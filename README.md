@@ -37,7 +37,7 @@ choix 1 : Lancer votre application **Laravel** depuis un serveur apache :
 > Ouvrir un navigateur sur ```localhost```
 >
 choix 2 : Lancer un serveur homestead **Laravel** :
-> $ php artisan serve
+> $ php artisan serve <br>
 > Ouvrir un navigateur sur ```localhost:8000```
 
 ## Contributeurs
