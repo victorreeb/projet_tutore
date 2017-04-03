@@ -76,7 +76,7 @@
             @foreach($exercises as $exercise)
                 <tr>
                     <td><p>{{$exercise->name}}</p></td>
-                    <td><p>{{$exercise->description}}</p></td>
+                    <td><p>{{$exercise->description}}</p></td> 
                     <td>
                         <p class="right">
                             @for($i = 0 ; $i < $exercise->difficulte ; $i++)
