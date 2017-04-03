@@ -45,18 +45,17 @@
                                 </div>
                             </div>
                         </div> -->
-
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4 center">
-                                    <button type="submit" class="btn waves-effect orange white-text text-accent-2">
-                                        Se connecter
-                                    </button>
-
-                                    <a class="btn waves-effect orange white-text text-accent-2"
-                                       href="{{ route('password.request') }}">
-                                        Mot de passe perdu ?
-                                    </a>
-                                </div>
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4 center">
+                                <button type="submit" class="btn waves-effect orange white-text text-accent-2">
+                                    Se connecter
+                                </button>
+                                <a class="btn waves-effect orange white-text text-accent-2" href="{{ route('password.request') }}">
+                                    Mot de passe perdu ?
+                                </a>
+                                <a class="btn waves-effect orange white-text text-accent-2" href="{{ route('register') }}">
+                                    Pas de compte ?
+                                </a>
                             </div>
                         </form>
                     </div>
