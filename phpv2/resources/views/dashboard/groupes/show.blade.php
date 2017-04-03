@@ -17,6 +17,14 @@
     </div>
 
     <h3>Ajouter un participant</h3>
+    @if (count($errors) > 0)
+        @foreach ($errors->all() as $error)
+            <div class="chip red">
+                {{ $error }} <i class="close material-icons">close</i>
+            </div>
+        @endforeach
+    @endif
+
     <form class="form-horizontal" role="form" method="POST"
           action="{{ route('dashboard.groupe.users.add', ['id' => $groupe->id]) }}">
         {{ csrf_field() }}
@@ -24,11 +32,6 @@
             <div class="input-field col s12">
                 <input type="text" id="name" name="name" class="materialize-textarea"/>
                 <label for="name">Nom</label>
-                @if ($errors->has('name'))
-                <span class="red-text">
-                  <strong>{{ $errors->first('name') }}</strong>
-                </span>
-                @endif
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
@@ -45,6 +48,7 @@
                 <th>Actions</th>
             </tr>
             </thead>
+
             <tbody>
             @foreach($participants as $participant)
                 <tr>
