@@ -6,9 +6,11 @@
     <hr>
     @if (count($errors) > 0)
         @foreach ($errors->all() as $error)
-            <div class="chip red">
+            <div class="chip red white-text">
                 {{ $error }} <i class="close material-icons">close</i>
+
             </div>
+
         @endforeach
     @endif
     <p>Etape 1/2 : informations sur l'exercice</p>
