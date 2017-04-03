@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
   /* Route for Groupe */
   Route::get('/groupes', 'GroupeController@index')->name('groupe.index');
   Route::get('/groupes/{id}', 'GroupeController@show')->name('groupe.show');
-  Route::get('/groupes/{id}/exercises', 'exercicesGroupesController@index')->name('groupe.exercise.index');
+  Route::get('/groupes/{id}/exercises', 'ExercisesGroupeController@index')->name('groupe.exercise.index');
 
   /* Route for Exercise */
   Route::get('/exercises', 'ExerciseController@index')->name('exercise.index');

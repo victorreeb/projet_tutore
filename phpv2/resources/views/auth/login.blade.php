@@ -52,9 +52,11 @@
                                 <button type="submit" class="btn waves-effect orange white-text text-accent-2">
                                     Se connecter
                                 </button>
-
                                 <a class="btn waves-effect orange white-text text-accent-2" href="{{ route('password.request') }}">
                                     Mot de passe perdu ?
+                                </a>
+                                <a class="btn waves-effect orange white-text text-accent-2" href="{{ route('register') }}">
+                                    Pas de compte ?
                                 </a>
                             </div>
                         </div>
