@@ -2,7 +2,7 @@
 @extends('layouts.navbar')
 
 @section('content')
-    <div class="col s12 m6">
+    <div class="col s12">
         <div class="card horizontal">
             <div class="card-image">
                 <img src="{{ asset('storage/uploads/avatars/'. $user->avatar) }}">
