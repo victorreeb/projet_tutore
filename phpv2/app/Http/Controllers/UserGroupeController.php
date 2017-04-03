@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Groupe;
 use App\User;
-use App\Exercise;
 use App\UserGroupe;
-use App\ExercisesGroupe;
 use Auth;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -46,11 +44,6 @@ class UserGroupeController extends Controller
     public function show($id)
     {
         $groupe = Groupe::where('id', $id)->first();
-        $exercises = new Collection;
-        $exercises_groupe = ExercisesGroupe::where('id_groupe', $groupe->id)->get();
-        foreach ($exercises_groupe as $exercise_groupe) {
-          $exercises->push(Exercise::where('id', $exercise_groupe->id_exercice)->first());
-        }
         if ($groupe->id_teacher == Auth::id()) {
             $users_groupe = UserGroupe::where('id_group', $groupe->id)->get();
             $users = new Collection;
@@ -61,7 +54,7 @@ class UserGroupeController extends Controller
             }
             $groupe->already_signup = UserGroupe::where('id_group', $groupe->id)->where('id_user', Auth::id())->count();
             $groupe->count_members = UserGroupe::where('id_group', $groupe->id)->count();
-            return view('dashboard/groupes/show', ['groupe' => $groupe, 'participants' => $users, 'exercises' => $exercises]);
+            return view('dashboard/groupes/show', ['groupe' => $groupe, 'participants' => $users]);
         } else {
             return redirect()->back();
         }

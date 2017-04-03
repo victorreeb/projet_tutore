@@ -61,37 +61,4 @@
             </tbody>
         </table>
     @endif
-    <h3>liste des exercices</h3>
-    @if(sizeof($exercises) > 0)
-        <table class="responsive-table">
-            <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Difficulté</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($exercises as $exercise)
-                <tr>
-                    <td><p>{{$exercise->name}}</p></td>
-                    <td><p>{{$exercise->description}}</p></td>
-                    <td>
-                        <p class="right">
-                            @for($i = 0 ; $i < $exercise->difficulte ; $i++)
-                                <i class="material-icons">star</i>
-                            @endfor
-                        </p>
-                    </td>
-                    <td>
-                        <a class="waves-effect red waves-light btn" href="{{ route('dashboard.groupe.exercise.delete', ['id' => $groupe->id, 'id_exercise' => $exercise->id]) }}">supprimer</a>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    @else
-        <p>Aucun exercice n'a été ajouté au groupe.</p>
-    @endif
 @endsection
