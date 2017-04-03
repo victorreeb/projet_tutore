@@ -2,7 +2,7 @@
 @extends('layouts.navbar')
 
 @section('content')
-    <div class="col s12 m6">
+    <div class="col s12">
         <div class="card horizontal">
             <div class="card-stacked">
                 <span class="card-title center">{{ $groupe->name }}</span>
@@ -10,9 +10,8 @@
                     <p>Créer par <b>{{ $groupe->name_teacher }}</b></p>
                     <p>Participants : {{ $groupe->count_members }}</p>
                 </div>
-                <div class="card-action center">
-                    editer ?
-                </div>
+                <!-- <div class="card-action center">
+                </div> -->
             </div>
         </div>
     </div>
@@ -26,9 +25,9 @@
                 <input type="text" id="name" name="name" class="materialize-textarea"/>
                 <label for="name">Nom</label>
                 @if ($errors->has('name'))
-                    <span class="help-block">
-                <strong>{{ $errors->first('name') }}</strong>
-            </span>
+                <span class="red-text">
+                  <strong>{{ $errors->first('name') }}</strong>
+                </span>
                 @endif
             </div>
         </div>
