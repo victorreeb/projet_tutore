@@ -6,7 +6,7 @@
         <div class="col s3">
             @include('dashboard.partials.sidebar')
         </div>
-        <div class="col s6">
+        <div class="col s8">
             <h4>Index exercices</h4>
             @if(sizeof($exercises) > 0)
                 <table class="responsive-table">
@@ -31,6 +31,8 @@
                                 </p>
                             </td>
                             <td>
+                              <a class="waves-effect waves-light btn"
+                                 href="{{ route('test.create', ['id' => $exercise->id]) }}">Ajout test</a>
                                 <a class="waves-effect waves-light btn"
                                    href="{{ route('exercise.show', ['id' => $exercise->id]) }}">voir plus</a>
                                 <a class="waves-effect red waves-light btn"
