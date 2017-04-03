@@ -6,16 +6,16 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
+                    @if (count($errors) > 0)
+                        @foreach ($errors->all() as $error)
+                            <div class="chip red white-text">
+                                {{ $error }} <i class="close material-icons">close</i>
+
+                            </div>
+
+                        @endforeach
+                    @endif
                     <div class="panel-body">
-                        @if (count($errors) > 0)
-                            @foreach ($errors->all() as $error)
-                                <div class="chip red">
-                                    {{ $error }} <i class="close material-icons">close</i>
-
-                                </div>
-
-                            @endforeach
-                        @endif
                         <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
