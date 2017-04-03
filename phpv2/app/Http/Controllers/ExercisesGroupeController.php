@@ -17,18 +17,24 @@ class ExercisesGroupeController extends Controller
     public function index()
     {
         $exercises_nofilter = Exercise::where('id_teacher', Auth::user()->id)->get();
-        $exercisesGroupe = ExercisesGroupe::all();
         $exercises = [];
         $actual_link = explode('/', $_SERVER['REQUEST_URI']);
+        $exercisesGroupe = ExercisesGroupe::where('id_groupe', $actual_link[2])->get();
+        $ban_tab = [];
         if (!$exercisesGroupe->isEmpty()) {
-            foreach ($exercisesGroupe as $value) {
-                if ($value->id_groupe != $actual_link[2]) {
-                    foreach ($exercises_nofilter as $exercice) {
-                        if ($value->id_exercice != $exercice->id) {
-                            $exercises[] = $exercice;
-                        }
+            foreach ($exercisesGroupe as $exerciseGroupe) {
+                foreach ($exercises_nofilter as $exercise) {
+                    if ($exerciseGroupe->id_exercice == $exercise->id) {
+                        $ban_tab[] = $exercise->id;
                     }
                 }
+            }
+
+            foreach ($exercises_nofilter as $exercise) {
+                if (!in_array($exercise->id, $ban_tab)) {
+                    $exercises[] = $exercise;
+                }
+
             }
         } else {
             foreach ($exercises_nofilter as $exercise) {
