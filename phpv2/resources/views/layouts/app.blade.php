@@ -23,12 +23,18 @@
     </script>
 </head>
 <body>
-  <div class="container">
-    @yield('content')
-    @include('includes.flash')
+  <div class="row">
+    <div class="col s2">
+      @if(Auth::check())
+        @include('dashboard.partials.sidebar')
+      @endif
+    </div>
+    <div class="col s8">
+      @yield('content')
+    </div>
   </div>
-    @yield('navbar')
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+  @yield('navbar')
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

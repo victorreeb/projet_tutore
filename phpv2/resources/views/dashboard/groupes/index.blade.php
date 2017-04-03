@@ -2,11 +2,6 @@
 @extends('layouts.navbar')
 
 @section('content')
-<div class="row">
-  <div class="col s3">
-    @include('dashboard.partials.sidebar')
-  </div>
-  <div class="col s6">
   <h4>Index groupes</h4>
   @if(sizeof($groupes) > 0)
   <table class="responsive-table">
@@ -35,6 +30,4 @@
     @else
       <p>Vous ne possédez aucun groupe...</p>
     @endif
-  </div>
-</div>
 @endsection
