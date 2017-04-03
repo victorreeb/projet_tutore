@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -36,4 +37,30 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ]);
+    }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    protected function getFailedLoginMessage()
+    {
+        return 'what you want here.';
+    }
+
+    protected function postLogin(){
+
+    }
+
 }
