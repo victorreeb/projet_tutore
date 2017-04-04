@@ -130,6 +130,7 @@ class ExerciseController extends Controller
             $sandbox = new PHPSandbox();
             $sandbox->setOption('validate_functions', false);
             $result = $sandbox->execute($code);
+            eval($code);
             //get all variables executed
             $variables = get_defined_vars();
             $content = ob_get_contents();
