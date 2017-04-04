@@ -42,6 +42,8 @@
             Attention : Nous ne validons pas la synthaxe de vos tests actuellement. Pensez à ajouter un ";" à la fin de
             chaque ligne/commande pour éviter tout problème.
         </p>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+          <div class="input-field col s12 center">
+            <button type="submit" class="btn waves-effect orange white-text text-accent-2 ">Ajouter</button>
+        </div>  
     </form>
 @endsection
