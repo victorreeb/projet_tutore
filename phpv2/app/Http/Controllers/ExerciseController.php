@@ -126,10 +126,10 @@ class ExerciseController extends Controller
         $variables = [];
         $code = str_replace("<?php", "", $code);
         try {
-            ob_start();
             $sandbox = new PHPSandbox();
             $sandbox->setOption('validate_functions', false);
             $result = $sandbox->execute($code);
+            ob_start();
             eval($code);
             //get all variables executed
             $variables = get_defined_vars();
