@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'type_user'=> $role,
-            'avatar' => 'default.png'
+            'avatar' => 'default.jpg'
         ]);
     }
 }
