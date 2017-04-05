@@ -4,6 +4,11 @@
 Nous avons été encadré par Monsieur Amine Boumaza.
 Vous pourrez retrouver notre site de suivi sur [Webetu](https://webetu.iutnc.univ-lorraine.fr/www/torzuoli2u/wordpress/index.php/about/).
 
+## Requis
+
+- PHP 5.6.4+
+- [Laravel Requirements](https://laravel.com/docs/5.4/installation#server-requirements)
+
 ## Installation
 
 Cloner le dépot :
@@ -25,13 +30,6 @@ Vider le cache de l'application :
 
 Lancer la migration de la base de données :
 > $ php artisan migrate
-
-Créer l'alias du dossier storage :
-> $ php artisan storage:link
-
-Créer les dossiers de stockage des avatars :
-> mkdir public/storage/uploads
-> mkdir public/storage/uploads/avatars
 
 choix 1 : Lancer votre application **Laravel** depuis un serveur apache :
 > Ouvrir un navigateur sur ```localhost```
